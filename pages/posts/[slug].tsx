@@ -44,12 +44,13 @@ const Post = ({ post, morePost, preview }) => {
   }
   return (
     <Layout>
-      <Head>
-        <title>{post.title}</title>
-      </Head>
       {router.isFallback ? (
         <h1 className={utilStyles.headingXl}>Loading...</h1>
       ) : (
+        <>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
         <article>
           <h1 className={utilStyles.headingXl}>{post.title}</h1>
           <div className={utilStyles.lightText}>
@@ -57,6 +58,7 @@ const Post = ({ post, morePost, preview }) => {
           </div>
           <div dangerouslySetInnerHTML={{ __html: post.content.html }} />
         </article>
+        </>
       )}
     </Layout>
   );
