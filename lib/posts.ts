@@ -1,70 +1,134 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import remark from "remark";
-import html from "remark-html";
+async function fetchAPI(
+  query: string,
+  { variables, preview }: { variables?: any, preview?: boolean } = {}
+) {
+  const res = await fetch(process.env.GRAPHCMS_PROJECT_API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${preview
+        ? process.env.GRAPHCMS_DEV_AUTH_TOKEN
+        : process.env.GRAPHCMS_PROD_AUTH_TOKEN
+        }`,
+    },
+    body: JSON.stringify({
+      query,
+      variables,
+    }),
+  })
+  const json = await res.json()
 
-const postsDirectory = path.join(process.cwd(), "posts");
+  if (json.errors) {
+    console.log(process.env.NEXT_EXAMPLE_CMS_GCMS_PROJECT_ID)
+    console.error(json.errors)
+    throw new Error('Failed to fetch API')
+  }
 
-export function getSortedPostsData() {
-  // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
-    // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, "");
+  return json.data
+}
 
-    // Read markdown file as string
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
 
-    // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents);
+export async function getAllPostsWithSlug(): Promise<{ slug: string }[]> {
+  const data = await fetchAPI(`
+    {
+      posts {
+        slug
+      }
+    } 
+  `)
+  return data.posts
+}
 
-    // Combine the data with the id
-    return {
-      id,
-      ...(matterResult.data as {date: string; title: string }),
-    };
-  });
-  // Sort post by date
-  return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
+export async function getPostAndMorePosts(slug: string, preview: boolean) {
+  const data = await fetchAPI(
+    `
+    query PostBySlug($slug: String!, $stage: Stage!) {
+      post(stage: $stage, where: {slug: $slug}) {
+        title
+        slug
+        content {
+          html
+        }
+        date
+        ogImage: coverImage {
+          url(transformation: {image: {resize: {fit: crop, width: 2000, height: 1000}}})
+        }
+        coverImage {
+          url(transformation: {image: {resize: {fit: crop, width: 2000, height: 1000}}})
+        }
+        author {
+          name
+          picture {
+            url(transformation: {image: {resize: {fit: crop, width: 100, height: 100}}})
+          }
+        }
+      }
+      morePosts: posts(orderBy: date_DESC, first: 2, where: {slug_not_in: [$slug]}) {
+        title
+        slug
+        excerpt
+        date
+        coverImage {
+          url(transformation: {image: {resize: {fit: crop, width: 2000, height: 1000}}})
+        }
+        author {
+          name
+          picture {
+            url(transformation: {image: {resize: {fit: crop, width: 100, height: 100}}})
+          }
+        }
+      }
     }
-  });
-}
-
-export function getAllPostsIds() {
-  const fileNames = fs.readdirSync(postsDirectory);
-
-  return fileNames.map((fileName) => {
-    return {
-      params: {
-        id: fileName.replace(/\.md$/, ""),
+  `,
+    {
+      preview,
+      variables: {
+        stage: preview ? 'DRAFT' : 'PUBLISHED',
+        slug,
       },
-    };
-  });
+    }
+  )
+  return data;
 }
 
-export async function getPostData(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-
-  // Use gray-matter to parse the post metadata section
-  const matterResult = matter(fileContents);
-
-  // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-  const contentHtml = processedContent.toString()
-
-  // Combine the data with the id
-  return {
-    id,
-    contentHtml,
-    ...matterResult.data,
-  };
+export async function getAllPostsForHome(preview) {
+  const data = await fetchAPI(
+    `
+    {
+      posts(orderBy: date_DESC, first: 20) {
+        title
+        slug
+        excerpt
+        date
+        coverImage {
+          url(transformation: {
+            image: {
+              resize: {
+                fit:crop,
+                width:2000,
+                height:1000
+              }
+            }
+          })
+        }
+        author {
+          name
+          picture {
+            url(transformation: {
+              image: {
+                resize: {
+                  width:100,
+                  height:100,
+                  fit:crop
+                }
+              }
+            })
+          }
+        }
+      }
+    }
+  `,
+    { preview }
+  )
+  return data.posts
 }

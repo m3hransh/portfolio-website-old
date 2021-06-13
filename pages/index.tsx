@@ -1,19 +1,21 @@
 import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
-import { getSortedPostsData } from "../lib/posts";
+import { getAllPostsForHome } from "../lib/posts";
 import Link from "next/link";
 import Date from "../components/date";
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
+import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 
-export const getStaticProps: GetStaticProps = async context => {
-  const allPostsData = getSortedPostsData();
+export const getStaticProps: GetStaticProps = async ({ preview=false}) => {
+  const allPostsData = await getAllPostsForHome(preview);
+  // By returning { props: { posts } }, the Blog component
+  // will receive 'posts' as a prop at build time
   return {
     props: { allPostsData },
   };
-}
+};
 
-export default function Home({ allPostsData }) {
+function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
@@ -28,9 +30,9 @@ export default function Home({ allPostsData }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItme} key={id}>
-              <Link href={`/posts/${id}`}>
+          {allPostsData.map(({ slug, date, title }) => (
+            <li className={utilStyles.listItme} key={slug}>
+              <Link href={`/posts/${slug}`}>
                 <a>{title}</a>
               </Link>
               <br />
@@ -44,3 +46,5 @@ export default function Home({ allPostsData }) {
     </Layout>
   );
 }
+
+export default Home;
