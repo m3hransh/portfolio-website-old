@@ -27,7 +27,7 @@ export default function Layout({
         />
         <meta
           property="og:image"
-          content={`https://mehran-blog.vercel.app/images/profile.svg`}
+          content={`https://mehran-blog.vercel.app/images/profile.png`}
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
