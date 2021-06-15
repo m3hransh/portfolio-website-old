@@ -18,7 +18,7 @@ function Intro({className}:any={}) {
   return (
     <div className={className}>
       <h1 className="mt-6 text-2xl sm:mt-8 sm:text-4xl">
-        Hi, I am <br />
+        Hello, I am <br />
         <span className="text-indigo-500">Mehran Shahidi</span> welcome to my
         Website
       </h1>
