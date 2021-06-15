@@ -6,7 +6,7 @@ import Link from "next/link";
 import Date from "../components/date";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 
-export const getStaticProps: GetStaticProps = async ({ preview=false}) => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const allPostsData = await getAllPostsForHome(preview);
   // By returning { props: { posts } }, the Blog component
   // will receive 'posts' as a prop at build time
@@ -14,22 +14,41 @@ export const getStaticProps: GetStaticProps = async ({ preview=false}) => {
     props: { allPostsData },
   };
 };
-
+function Intro({className}:any={}) {
+  return (
+    <div className={className}>
+      <h1 className="mt-6 text-2xl sm:mt-8 sm:text-4xl">
+        Hi, I am <br />
+        <span className="text-indigo-500">Mehran Shahidi</span> welcome to my
+        Website
+      </h1>
+      <div className="mt-4 sm:mt-6">
+        <a className="btn" href="#">
+          Contact Me
+        </a>
+      </div>
+    </div>
+  );
+}
 function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p>
-          Hi, My name is Mehran. I am a genius software Engineer. I love to make
-          cute things
-        </p>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
+      <div className="grid lg:grid-cols-2">
+        <div className="px-12 py-4  flex flex-col items-center  sm:max-w-xl">
+          <img src="/images/profile.svg" className="px-8 py-2 h-72 lg:h-auto " alt={`Profile`} />
+          <Intro className="lg:hidden"/>
+        </div>
+        <div className="hidden relative lg:block">
+          <Intro/>
+          </div>
+      </div>
+
+      <section className="max-w-2xl px-12">
+        <h2 className="text-4xl text-indigo-500 mt-4">Blog</h2>
+        <ul className="mt-4">
           {allPostsData.map(({ slug, date, title }) => (
             <li className={utilStyles.listItme} key={slug}>
               <Link href={`/posts/${slug}`}>
