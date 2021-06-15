@@ -15,6 +15,33 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+function DarkModeSwitch(
+  { enabled, setEnabled , className}: 
+  {enabled: boolean, setEnabled:any, className?:string}) {
+  return (
+  <Switch.Group>
+    <div className={`${className} flex items-center`}>
+      <Switch.Label className="mr-2 dark:text-gray-300">
+        Dark Mode
+      </Switch.Label>
+      <Switch
+        checked={enabled}
+        onChange={setEnabled}
+        className={`${
+          enabled ? "bg-blue-600" : "bg-gray-200"
+        } relative inline-flex items-center h-6 rounded-full w-11`}
+      >
+        <span className="sr-only">Enable notifications</span>
+        <span
+          className={`${
+            enabled ? "translate-x-6" : "translate-x-1"
+          } inline-block w-4 h-4 transform bg-white rounded-full`}
+        />
+      </Switch>
+    </div>
+  </Switch.Group>
+  )
+}
 export default function Navbar() {
   const [enabled, setEnabled] = useState(true);
 
@@ -75,32 +102,12 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="absolute inset-y-0 right-0 hidden sm:flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
                 <button className="dark:bg-gray-800 p-1 rounded-full text-gray-400 dakr:hover:text-white hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
-                <Switch.Group>
-                  <div className="flex items-center mx-4">
-                    <Switch.Label className="mr-2 dark:text-gray-300 font-bold">
-                      Dark Mode
-                    </Switch.Label>
-                    <Switch
-                      checked={enabled}
-                      onChange={setEnabled}
-                      className={`${
-                        enabled ? "bg-blue-600" : "bg-gray-200"
-                      } relative inline-flex items-center h-6 rounded-full w-11`}
-                    >
-                      <span className="sr-only">Enable notifications</span>
-                      <span
-                        className={`${
-                          enabled ? "translate-x-6" : "translate-x-1"
-                        } inline-block w-4 h-4 transform bg-white rounded-full`}
-                      />
-                    </Switch>
-                  </div>
-                </Switch.Group>
+                <DarkModeSwitch enabled={enabled} setEnabled={setEnabled} />
               </div>
             </div>
           </div>
@@ -122,6 +129,7 @@ export default function Navbar() {
                   </a>
                 </Link>
               ))}
+              <DarkModeSwitch enabled={enabled} setEnabled={setEnabled} className="px-3 py-2 rounded-md text-base font-medium" />
             </div>
           </Disclosure.Panel>
         </>

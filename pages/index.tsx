@@ -37,7 +37,7 @@ function Home({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
       <div className="grid lg:grid-cols-2">
-        <div className="px-12 py-4  flex flex-col items-center  sm:max-w-xl">
+        <div className="px-12 py-4  flex flex-col items-center  lg:max-w-xl">
           <img src="/images/profile.svg" className="px-8 py-2 h-72 lg:h-auto " alt={`Profile`} />
           <Intro className="lg:hidden"/>
         </div>
@@ -46,7 +46,7 @@ function Home({ allPostsData }) {
           </div>
       </div>
 
-      <section className="max-w-2xl px-12">
+      <section className="max-w-2xl px-12 py-8">
         <h2 className="text-4xl text-indigo-500 mt-4">Blog</h2>
         <ul className="mt-4">
           {allPostsData.map(({ slug, date, title }) => (
