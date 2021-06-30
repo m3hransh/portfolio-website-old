@@ -38,7 +38,7 @@ export default function Layout({
         <Hero className="max-w-2xl mx-auto dark:text-white" />
       </header>
       }
-      <div className=" h-auto mt-10 dark:bg-gray-900 dark:text-white">
+      <div className=" h-auto mt-10 dark:bg-gray-800 dark:text-white">
         <main className="max-w-2xl mx-auto">{children}</main>
         {!home && (
           <div className={styles.backToHome}>
