@@ -16,8 +16,7 @@ function classNames(...classes) {
 }
 
 function DarkModeSwitch(
-  { enabled, setEnabled , className}: 
-  {enabled: boolean, setEnabled:any, className?:string}) {
+  { enabled, setEnabled , className}: {enabled: boolean, setEnabled:any, className?:string}) {
   return (
   <Switch.Group>
     <div className={`${className} flex items-center`}>

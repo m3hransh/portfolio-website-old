@@ -5,6 +5,7 @@ import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import React from "react";
 import Navbar from "./nav";
+import Hero from "./hero";
 
 const name = "Mehran Shahidi";
 export const siteTitle = "Mehran Shahidi";
@@ -32,8 +33,13 @@ export default function Layout({
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className="max-w-2xl mx-auto dark:text-white">
-        <main>{children}</main>
+      {home && 
+      <header className="">
+        <Hero className="max-w-2xl mx-auto dark:text-white" />
+      </header>
+      }
+      <div className=" h-auto mt-10 dark:bg-gray-900 dark:text-white">
+        <main className="max-w-2xl mx-auto">{children}</main>
         {!home && (
           <div className={styles.backToHome}>
             <Link href="/">
