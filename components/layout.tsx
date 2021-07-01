@@ -1,13 +1,11 @@
-import styles from "./layout.module.css";
-import Image from "next/image";
-import Head from "next/head";
-import utilStyles from "../styles/utils.module.css";
-import Link from "next/link";
-import React from "react";
-import Navbar from "./nav";
+import Head from 'next/head';
+import Link from 'next/link';
+import React from 'react';
+import Navbar from './nav';
+import Hero from './hero';
 
-const name = "Mehran Shahidi";
-export const siteTitle = "Mehran Shahidi";
+const name = 'Mehran Shahidi';
+export const siteTitle = 'Mehran Shahidi';
 
 export default function Layout({
   children,
@@ -32,15 +30,13 @@ export default function Layout({
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className="max-w-2xl mx-auto dark:text-white">
-        <main>{children}</main>
-        {!home && (
-          <div className={styles.backToHome}>
-            <Link href="/">
-              <a>← Back to home</a>
-            </Link>
-          </div>
-        )}
+      {home && (
+        <header className="">
+          <Hero className="max-w-2xl mx-auto dark:text-white" />
+        </header>
+      )}
+      <div className=" h-auto mt-10 dark:bg-gray-800 dark:text-white">
+        <main className="max-w-2xl mx-auto">{children}</main>
       </div>
     </>
   );
