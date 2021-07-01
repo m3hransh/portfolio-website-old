@@ -1,3 +1,27 @@
+export interface Author {
+  name: string;
+  picture: { url: string };
+}
+
+export interface PostView {
+  title: string;
+  slug: string;
+  data: string;
+  ogImage: { url: string };
+  coverImage: { url: string };
+  author: Author;
+  excerpt: string;
+  date: string;
+}
+
+export interface PostData extends PostView {
+  content: { html: string };
+}
+export interface PostMorePosts {
+  post: PostData;
+  morePosts: PostView[];
+}
+
 async function fetchAPI(
   query: string,
   { variables, preview }: { variables?: any, preview?: boolean } = {}
@@ -39,7 +63,7 @@ export async function getAllPostsWithSlug(): Promise<{ slug: string }[]> {
   return data.posts
 }
 
-export async function getPostAndMorePosts(slug: string, preview: boolean) {
+export async function getPostAndMorePosts(slug: string, preview: boolean): Promise<PostMorePosts> {
   const data = await fetchAPI(
     `
     query PostBySlug($slug: String!, $stage: Stage!) {
@@ -56,6 +80,7 @@ export async function getPostAndMorePosts(slug: string, preview: boolean) {
         coverImage {
           url(transformation: {image: {resize: {fit: crop, width: 2000, height: 1000}}})
         }
+        excerpt
         author {
           name
           picture {
@@ -91,7 +116,7 @@ export async function getPostAndMorePosts(slug: string, preview: boolean) {
   return data;
 }
 
-export async function getAllPostsForHome(preview) {
+export async function getAllPostsForHome(preview: boolean): Promise<PostView[]> {
   const data = await fetchAPI(
     `
     {

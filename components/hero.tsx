@@ -1,17 +1,17 @@
-import React from "react";
-import SocialFollow from "./socialFollow";
+import React from 'react';
+import SocialFollow from './socialFollow';
 
 function Intro({ className }: any = {}) {
   return (
     <div className={className}>
       <h1 className="mt-6 text-2xl sm:mt-8 sm:text-4xl">
         Hello, I am <br />
-        <span className="text-indigo-500">Mehran Shahidi</span> welcome to my
-        Website
+        <span className="text-indigo-500">Mehran Shahidi</span>{' '}
+        welcome to my Website
       </h1>
       <div className="mt-4 sm:mt-6">
-        <a className="btn" href="#">
-          Contact Me
+        <a className="btn" href="/about">
+          About me
         </a>
       </div>
     </div>
