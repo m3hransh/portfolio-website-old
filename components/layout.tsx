@@ -30,13 +30,8 @@ export default function Layout({
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      {home && (
-        <header className="">
-          <Hero className="max-w-2xl mx-auto dark:text-white" />
-        </header>
-      )}
       <div className=" h-auto mt-10 dark:bg-gray-800 dark:text-white">
-        <main className="max-w-2xl mx-auto">{children}</main>
+        {children}
       </div>
     </>
   );

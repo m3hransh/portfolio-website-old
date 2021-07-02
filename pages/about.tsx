@@ -1,10 +1,11 @@
-import Image from 'next/image';
 import Layout from '../components/layout';
+import { FC } from 'react';
+import ProgrammingLanguages from '../components/programmingLanguages';
 
-function About() {
+const About: FC = () => {
   return (
     <Layout>
-      <div className="grid lg:grid-cols-2">
+      <div className="max-w-2xl mx-auto grid lg:grid-cols-2">
         <div className="px-8 py-4">
           <img
             src="/images/profile.svg"
@@ -15,12 +16,14 @@ function About() {
             Bio
           </h1>
         </div>
-        <div className=" relative bg-gray-900 lg:block p-3">
-          <h1 className="text-2xl font-semibold font-mono">Skills</h1>
+        <div className=" relative  lg:block p-3">
+          <div>
+            <ProgrammingLanguages />
+          </div>
         </div>
       </div>
     </Layout>
   );
-}
+};
 
 export default About;

@@ -67,52 +67,56 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
           <Head>
             <title>{post.title}</title>
           </Head>
-          <article>
-            <div className="w-full h-100 ">
-              <Image
-                className="object-cover object-center rounded-lg"
-                src={post.coverImage.url}
-                width="1000"
-                height="300rem"
-                alt="Post picture"
-              />
-            </div>
-            <h1 className={utilStyles.headingXl}>{post.title}</h1>
-            <div className="flex items-center space-x-3">
-              <Image
-                className="rounded-full"
-                src={post.author.picture.url}
-                alt="profile"
-                width="55rem"
-                height="55rem"
-              />
-              <div className="flex flex-col">
-                <p className="text-gray-500 dark:text-gray-300">
-                  {post.author.name}
-                </p>
-                <Date
-                  className="text-gray-400"
-                  dateString={post.date}
+          <main className="max-w-2xl w-4/5 mx-auto">
+            <article>
+              <div className="w-full h-100 ">
+                <Image
+                  className="object-cover object-center rounded-lg"
+                  src={post.coverImage.url}
+                  width="1000"
+                  height="300rem"
+                  alt="Post picture"
                 />
               </div>
-            </div>
+              <h1 className={utilStyles.headingXl}>{post.title}</h1>
+              <div className="flex items-center space-x-3">
+                <Image
+                  className="rounded-full"
+                  src={post.author.picture.url}
+                  alt="profile"
+                  width="55rem"
+                  height="55rem"
+                />
+                <div className="flex flex-col">
+                  <p className="text-gray-500 dark:text-gray-300">
+                    {post.author.name}
+                  </p>
+                  <Date
+                    className="text-gray-400"
+                    dateString={post.date}
+                  />
+                </div>
+              </div>
+              <div
+                className="mt-8 text-xl"
+                dangerouslySetInnerHTML={{
+                  __html: post.content.html,
+                }}
+              />
+            </article>
+            <h1 className="mt-8 text-xl font-bold tracking-wide text-indigo-700 dark:text-indigo-600 font-serif">
+              More posts
+            </h1>
+            <BlogItems allPostsData={morePosts} />
             <div
-              className="mt-8 text-xl"
-              dangerouslySetInnerHTML={{ __html: post.content.html }}
-            />
-          </article>
-          <h1 className="mt-8 text-xl font-bold tracking-wide text-indigo-700 dark:text-indigo-600 font-serif">
-            More posts
-          </h1>
-          <BlogItems allPostsData={morePosts} />
-          <div
-            className="text-indigo-700 dark:text-indigo-600 text-lg hover:text-indigo-900
+              className="text-indigo-700 dark:text-indigo-600 text-lg hover:text-indigo-900
            dark:hover:text-indigo-400 mt-8 transition  duration-500 ease-in-out mb-8 "
-          >
-            <Link href="/">
-              <a>← Back to home</a>
-            </Link>
-          </div>
+            >
+              <Link href="/">
+                <a>← Back to home</a>
+              </Link>
+            </div>
+          </main>
         </>
       )}
     </Layout>

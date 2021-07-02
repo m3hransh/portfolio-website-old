@@ -1,5 +1,6 @@
 import React from 'react';
 import SocialFollow from './socialFollow';
+import Link from 'next/link';
 
 function Intro({ className }: any = {}) {
   return (
@@ -10,9 +11,9 @@ function Intro({ className }: any = {}) {
         welcome to my Website
       </h1>
       <div className="mt-4 sm:mt-6">
-        <a className="btn" href="/about">
-          About me
-        </a>
+        <Link href="/about">
+          <a className="btn">About me</a>
+        </Link>
       </div>
     </div>
   );
