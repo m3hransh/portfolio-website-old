@@ -1,4 +1,4 @@
-import PostItem from '../components/postItem';
+import PostItem from './PostItem';
 import Link from 'next/link';
 import { FC } from 'react';
 import { PostView } from '../lib/posts';

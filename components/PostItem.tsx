@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Date from './date';
+import Date from './Date';
 import { PostView } from '../lib/posts';
 
 interface PostItemProps {

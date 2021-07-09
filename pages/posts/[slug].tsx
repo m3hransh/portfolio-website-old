@@ -1,17 +1,17 @@
 import { useRouter } from 'next/router';
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import {
   getAllPostsWithSlug,
   getPostAndMorePosts,
 } from '../../lib/posts';
 import Head from 'next/head';
-import Date from '../../components/date';
+import Date from '../../components/Date';
 import utilStyles from '../../styles/utils.module.css';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import ErrorPage from 'next/error';
 import Image from 'next/image';
 import Link from 'next/link';
-import BlogItems from '../../components/blogItems';
+import BlogItems from '../../components/BlogItems';
 import { PostData, PostView } from '../../lib/posts';
 import { FC } from 'react';
 

@@ -1,11 +1,13 @@
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import { FC } from 'react';
-import ProgrammingLanguages from '../components/programmingLanguages';
+import ProgrammingLanguages from '../components/ProgrammingLanguages';
+import Technologies from '../components/Technologies';
+import CardPannel from '../components/CardPannel';
 
 const About: FC = () => {
   return (
     <Layout>
-      <div className="max-w-2xl mx-auto grid lg:grid-cols-2">
+      <div className="max-w-2xl w-5/6 mx-auto grid lg:space-x-4 space-y-4 lg:grid-cols-2">
         <div className="px-8 py-4">
           <img
             src="/images/profile.svg"
@@ -13,14 +15,20 @@ const About: FC = () => {
             alt={`Profile`}
           />
           <h1 className="mt-4 text-2xl font-semibold font-mono">
-            Bio
+            Who Am I?
           </h1>
         </div>
-        <div className=" relative  lg:block p-3">
-          <div>
-            <ProgrammingLanguages />
-          </div>
+        <div className="px-8 py-4">
+          <h1 className="mt-4 text-2xl font-semibold font-mono">
+            Projects
+          </h1>
         </div>
+        <CardPannel>
+          <ProgrammingLanguages />
+        </CardPannel>
+        <CardPannel>
+          <Technologies />
+        </CardPannel>
       </div>
     </Layout>
   );

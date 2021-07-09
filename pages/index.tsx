@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import Layout, { siteTitle } from '../components/layout';
+import Layout, { siteTitle } from '../components/Layout';
 import { getAllPostsForHome } from '../lib/posts';
 import { GetStaticProps } from 'next';
-import Hero from '../components/hero';
-import BlogItems from '../components/blogItems';
+import Hero from '../components/Hero';
+import BlogItems from '../components/BlogItems';
 
 export const getStaticProps: GetStaticProps = async ({
   preview = false,

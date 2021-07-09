@@ -1,5 +1,5 @@
 import React from 'react';
-import SocialFollow from './socialFollow';
+import SocialFollow from './SocialFollow';
 import Link from 'next/link';
 
 function Intro({ className }: any = {}) {
@@ -34,7 +34,7 @@ export default function Hero({ className }) {
           </div>
           <Intro className="lg:hidden" />
         </div>
-        <div className="hidden  lg:block">
+        <div className="hidden lg:block">
           <Intro />
         </div>
       </div>
