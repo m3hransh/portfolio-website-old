@@ -104,12 +104,12 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
                 }}
               />
             </article>
-            <h1 className="mt-8 text-xl font-bold tracking-wide text-indigo-700 dark:text-indigo-600 font-serif">
+            <h1 className="mt-8 text-xl font-bold tracking-wide text-indigo-700 dark:text-pink-500 font-serif">
               More posts
             </h1>
             <BlogItems allPostsData={morePosts} />
             <div
-              className="text-indigo-700 dark:text-indigo-600 text-lg hover:text-indigo-900
+              className="text-indigo-700 dark:text-pink-500 text-lg hover:text-indigo-900
            dark:hover:text-indigo-400 mt-8 transition  duration-500 ease-in-out mb-8 "
             >
               <Link href="/">

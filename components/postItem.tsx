@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import Date from './Date';
-import { PostView, imageLoader } from '../lib/posts';
-import Image from 'next/image';
+import { PostView } from '../lib/posts';
 
 interface PostItemProps {
   postView: PostView;
@@ -14,14 +13,11 @@ const PostItem: FC<PostItemProps> = ({ postView }) => {
     dark:hover:bg-gray-700 dark:bg-gray-900 p-6 shadow-lg rounded-lg flex justify-between items-center"
     >
       <div className="flex flex-1">
-        <div className="mr-4 relative flex-none hidden lg:block w-24 h-24 ">
-          <Image
-            loader={imageLoader}
+        <div className="mr-4 flex-none ">
+          <img
+            className=" hidden lg:block shadow  w-24 h-24 object-cover object-center rounded-lg"
             src={postView.coverImage.url}
-            alt="Cover Image"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg shadow"
+            alt="Avatar"
           />
         </div>
         <div className="flex-1">
@@ -34,15 +30,11 @@ const PostItem: FC<PostItemProps> = ({ postView }) => {
         </div>
       </div>
       <div className="flex flex-col ml-2 flex-none items-center text-center">
-        <div className="relative w-12 h-12 ">
-          <Image
-            loader={imageLoader}
-            className="shadow rounded-full"
-            src={postView.author.picture?.url}
-            alt="Avatar"
-            layout="fill"
-          />
-        </div>
+        <img
+          className="shadow sm:w-22 sm:h-22 w-10 h-10 object-cover object-center rounded-full"
+          src={postView.author.picture?.url}
+          alt="Avatar"
+        />
         <p className="text-xs">{postView.author.name}</p>
         <small className="mt-5 text-gray-500">
           <Date dateString={postView.date} />
