@@ -7,7 +7,7 @@ function Intro({ className }: any = {}) {
     <div className={className}>
       <h1 className="mt-6 text-2xl sm:mt-8 sm:text-4xl">
         Hello, I am <br />
-        <span className="text-indigo-500">Mehran Shahidi</span>{' '}
+        <span className="text-indigo-500">Mehran Shahidi</span> <br />
         welcome to my Website
       </h1>
       <div className="mt-4 sm:mt-6">
@@ -32,7 +32,7 @@ export default function Hero({ className }) {
             />
             <SocialFollow />
           </div>
-          <Intro className="lg:hidden" />
+          <Intro className="lg:hidden flex flex-col items-center" />
         </div>
         <div className="hidden lg:block">
           <Intro />

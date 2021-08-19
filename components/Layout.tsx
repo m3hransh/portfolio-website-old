@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import Navbar from './Nav';
+import Hero from './Hero';
 
 const name = 'Mehran Shahidi';
 export const siteTitle = 'Mehran Shahidi';
@@ -15,6 +16,7 @@ export default function Layout({
 }) {
   return (
     <>
+      <Navbar />
       <Head>
         <link rel="icon" type="image/png" href="images/profile.png" />
         <meta
@@ -28,9 +30,8 @@ export default function Layout({
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Navbar />
-      <div className="h-auto mt-10 mb-8 dark:bg-gray-800 dark:text-white">
-        {children}
+      <div className=" h-auto mt-10 dark:bg-gray-800 dark:text-white">
+        <main className=" mx-auto">{children}</main>
       </div>
     </>
   );

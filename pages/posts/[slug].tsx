@@ -3,6 +3,7 @@ import Layout from '../../components/Layout';
 import {
   getAllPostsWithSlug,
   getPostAndMorePosts,
+  imageLoader,
 } from '../../lib/posts';
 import Head from 'next/head';
 import Date from '../../components/Date';
@@ -14,6 +15,11 @@ import Link from 'next/link';
 import BlogItems from '../../components/BlogItems';
 import { PostData, PostView } from '../../lib/posts';
 import { FC } from 'react';
+// import Markdown from '../../components/Markdown';
+import dynamic from 'next/dynamic';
+const Markdown = dynamic(() => import('../../components/Markdown'), {
+  ssr: false,
+});
 
 // This function gets called at build time
 export const getStaticPaths: GetStaticPaths = async (context) => {
@@ -36,7 +42,7 @@ export const getStaticProps: GetStaticProps = async ({
     params.slug as string,
     preview,
   );
-
+  // console.log(data);
   // Pass post data to the page via props
   return {
     props: {
@@ -54,7 +60,6 @@ interface PostProps {
 }
 const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
   const router = useRouter();
-  console.log(morePosts);
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
@@ -67,11 +72,12 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
           <Head>
             <title>{post.title}</title>
           </Head>
-          <main className="max-w-2xl w-4/5 mx-auto">
+          <main className="max-w-3xl w-4/5 mx-auto">
             <article>
               <div className="w-full h-100 ">
                 <Image
                   className="object-cover object-center rounded-lg"
+                  loader={imageLoader}
                   src={post.coverImage.url}
                   width="1000"
                   height="300rem"
@@ -82,6 +88,7 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
               <div className="flex items-center space-x-3">
                 <Image
                   className="rounded-full"
+                  loader={imageLoader}
                   src={post.author.picture.url}
                   alt="profile"
                   width="55rem"
@@ -97,12 +104,7 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
                   />
                 </div>
               </div>
-              <div
-                className="mt-8 text-xl"
-                dangerouslySetInnerHTML={{
-                  __html: post.content.html,
-                }}
-              />
+              <Markdown markdown={post.content} />
             </article>
             <h1 className="mt-8 text-xl font-bold tracking-wide text-indigo-700 dark:text-pink-500 font-serif">
               More posts

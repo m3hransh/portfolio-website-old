@@ -1,7 +1,8 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { useEffect, useState } from 'react';
 import { Disclosure, Switch } from '@headlessui/react';
-import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { FcMenu } from 'react-icons/fc';
+import { AiOutlineClose } from 'react-icons/ai';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -76,19 +77,19 @@ export default function Navbar() {
       {({ open }) => (
         <div className="h-16">
           <div className="fixed top-0 opacity-95 inset-x-0 bg-gray-50 dark:bg-gray-900 z-50">
-            <div className="max-w-3xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto px-2 sm:px-6 ">
               <div className="relative flex items-center justify-between h-16">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button*/}
                   <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
-                      <XIcon
+                      <AiOutlineClose
                         className="block h-6 w-6"
                         aria-hidden="true"
                       />
                     ) : (
-                      <MenuIcon
+                      <FcMenu
                         className="block h-6 w-6"
                         aria-hidden="true"
                       />
@@ -96,20 +97,18 @@ export default function Navbar() {
                   </Disclosure.Button>
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                  <div className="flex-shrink-0 flex items-center">
+                  {/* <div className="flex-shrink-0 flex items-center">
                     <img
                       className="sm:block h-8 w-auto"
                       src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                       alt="Workflow"
                     />
-                  </div>
-                  <div className="hidden sm:block sm:ml-6">
+                  </div> */}
+                  <div className="hidden sm:block ">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
                         <Link href={item.href} key={item.name}>
                           <a
-                            key={item.name}
-                            href={item.href}
                             className={classNames(
                               item.current
                                 ? 'bg-gray-900 text-white'

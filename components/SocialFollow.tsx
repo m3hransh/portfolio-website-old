@@ -13,7 +13,7 @@ const LinkedIn =
 
 export default function SocialFollow() {
   return (
-    <div className="flex items-baseline space-x-3 justify-center  ">
+    <div className="flex items-baseline space-x-5 justify-center  ">
       <a target="_blank" href={YouTubeLink}>
         <FontAwesomeIcon
           className="h-10 socialIcon"

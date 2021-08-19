@@ -6,21 +6,27 @@ export interface Author {
 
 export interface PostView {
   title: string;
+  id: number;
   slug: string;
   data: string;
   coverImage: { url: string };
   author: Author;
   excerpt: string;
   date: string;
+  readTime: number;
 }
 
 export interface PostData extends PostView {
-  content: { html: string };
+  content: string;
 }
 export interface PostMorePosts {
   post: PostData;
   morePosts: PostView[];
 }
+
+export const imageLoader: ImageLoader = (props) => {
+  return (process.env.NEXT_PUBLIC_IMAGE_PATH as string) + props.src;
+};
 
 async function fetchAPI(
   query: string,
@@ -71,58 +77,53 @@ export async function getPostAndMorePosts(
 ): Promise<PostMorePosts> {
   const data = await fetchAPI(
     `
-    query PostBySlug($slug: String!, $stage: Stage!) {
-      post(stage: $stage, where: {slug: $slug}) {
+    query PostBySlug($slug: String!) {
+      post: postBySlug( slug: $slug) {
         title
         slug
-        content {
-          html
-        }
+        content
         date
-        ogImage: coverImage {
-          url(transformation: {image: {resize: {fit: crop, width: 2000, height: 1000}}})
-        }
+        readTime
         coverImage {
-          url(transformation: {image: {resize: {fit: crop, width: 2000, height: 1000}}})
+          url
         }
         excerpt
         author {
           name
-          picture {
-            url(transformation: {image: {resize: {fit: crop, width: 100, height: 100}}})
+          picture{
+            url
           }
         }
       }
-      morePosts: posts(orderBy: date_DESC, first: 2, where: {slug_not_in: [$slug]}) {
+      morePosts: posts(sort: "date:desc", limit: 2, where: {slug_ncontains: [$slug]}) {
         title
         slug
         excerpt
         date
+        readTime
         coverImage {
-          url(transformation: {image: {resize: {fit: crop, width: 2000, height: 1000}}})
+          url
         }
         author {
           name
           picture {
-            url(transformation: {image: {resize: {fit: crop, width: 100, height: 100}}})
+            url
           }
         }
       }
-    }
+}
   `,
     {
       preview,
       variables: {
-        stage: preview ? 'DRAFT' : 'PUBLISHED',
+        // stage: preview ? 'PREVIEW' : 'LIVE',
         slug,
       },
     },
   );
   return data;
 }
-export const imageLoader: ImageLoader = (props) => {
-  return (process.env.NEXT_PUBLIC_IMAGE_PATH as string) + props.src;
-};
+
 export async function getAllPostsForHome(
   preview: boolean,
 ): Promise<PostView[]> {
@@ -134,6 +135,7 @@ export async function getAllPostsForHome(
         slug
         excerpt
         date
+        readTime
         coverImage{
           url
         }
