@@ -15,7 +15,10 @@ function App({ Component, pageProps }: AppProps) {
     // Whenever the user explicitly chooses light mode
     // localStorage.theme = "light";
     // localStorage.removeItem("theme");
-    document.body.classList.add('dark:bg-gray-800');
+    document.body.classList.add('dark:bg-background-900');
+    document.body.classList.add('dark:text-main-50');
+    document.body.classList.add('text-main-900');
+    document.body.classList.add('bg-background');
   }, []);
 
   return <Component {...pageProps} />;

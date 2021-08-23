@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary: #f118eae5;
+  --secondary: rgb(185, 27, 206);
+  --accent: #26e6cc;
+  --background: #2d3748;
+  --main: #1c222c;
+  --header: #2d3748;
+}
 @layer components {
   .btn {
     @apply inline-block px-4 py-2 rounded-lg shadow-lg uppercase tracking-wider 
@@ -9,8 +17,8 @@
     hover:-translate-y-0.5 transform transition active:bg-indigo-600 focus:outline-none
     focus:ring focus:ring-offset-2;
   }
-  
+
   .socialIcon {
-    @apply hover:text-indigo-700 hover:-translate-y-0.5 transform transition
+    @apply hover:text-indigo-700 hover:-translate-y-0.5 transform transition;
   }
 }

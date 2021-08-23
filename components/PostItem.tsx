@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import Date from './Date';
 import { PostView, imageLoader } from '../lib/posts';
 import Image from 'next/image';
+import { IoCalendar, IoHourglassOutline } from 'react-icons/io5';
 
 interface PostItemProps {
   postView: PostView;
@@ -10,8 +11,8 @@ interface PostItemProps {
 const PostItem: FC<PostItemProps> = ({ postView }) => {
   return (
     <div
-      className="bg-gray-50 mt-4 transition transform duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:bg-gray-200 
-    dark:hover:bg-gray-700 dark:bg-gray-900 p-6 shadow-lg rounded-lg flex justify-between items-center"
+      className="bg-main-50 mt-4 transition transform duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:bg-main-200 
+    dark:hover:bg-main-700 dark:bg-main-900 p-6 shadow-lg rounded-lg flex justify-between items-center"
     >
       <div className="flex flex-1">
         <div className="mr-4 relative flex-none hidden lg:block w-24 h-24 ">
@@ -25,15 +26,15 @@ const PostItem: FC<PostItemProps> = ({ postView }) => {
           />
         </div>
         <div className="flex-1">
-          <h1 className="text-xl font-medium text-gray-900 dark:text-gray-300">
+          <h1 className="text-xl font-medium text-gray-900 dark:text-main-300">
             {postView.title}
           </h1>
-          <p className="text-gray-400">
+          <p className="text-main-400">
             {postView.excerpt.slice(0, 100)}...
           </p>
         </div>
       </div>
-      <div className="flex flex-col ml-2 flex-none items-center text-center">
+      <div className="flex flex-col ml-2 flex-none items-center">
         <div className="relative w-12 h-12 ">
           <Image
             loader={imageLoader}
@@ -44,9 +45,16 @@ const PostItem: FC<PostItemProps> = ({ postView }) => {
           />
         </div>
         <p className="text-xs">{postView.author.name}</p>
-        <small className="mt-5 text-gray-500">
-          <Date dateString={postView.date} />
-        </small>
+        <div className="flex mt-2 flex-col items-start">
+          <small className="text-main-500 flex items-center space-x-1">
+            <IoCalendar className="inline" />
+            <Date dateString={postView.date} />
+          </small>
+          <small className="text-main-500 flex items-center space-x-1">
+            <IoHourglassOutline className="inline" />
+            <p>{postView.readTime} min read</p>
+          </small>
+        </div>
       </div>
     </div>
   );

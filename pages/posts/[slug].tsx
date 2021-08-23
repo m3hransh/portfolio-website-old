@@ -14,6 +14,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import BlogItems from '../../components/BlogItems';
 import { PostData, PostView } from '../../lib/posts';
+import { IoHourglassOutline, IoCalendar } from 'react-icons/io5';
 import { FC } from 'react';
 // import Markdown from '../../components/Markdown';
 import dynamic from 'next/dynamic';
@@ -98,13 +99,19 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
                   <p className="text-gray-500 dark:text-gray-300">
                     {post.author.name}
                   </p>
-                  <Date
-                    className="text-gray-400"
-                    dateString={post.date}
-                  />
+                  <div className="flex space-x-2">
+                    <small className="text-main-500 flex items-center space-x-1">
+                      <IoCalendar className="inline" />{' '}
+                      <Date dateString={post.date} />
+                    </small>
+                    <small className="text-main-500 flex items-center space-x-1">
+                      <IoHourglassOutline className="inline" />
+                      <p>{post.readTime} min read</p>
+                    </small>
+                  </div>
                 </div>
               </div>
-              <Markdown markdown={post.content} />
+              <Markdown className="mt-5" markdown={post.content} />
             </article>
             <h1 className="mt-8 text-xl font-bold tracking-wide text-indigo-700 dark:text-pink-500 font-serif">
               More posts

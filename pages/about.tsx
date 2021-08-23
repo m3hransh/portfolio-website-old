@@ -1,8 +1,9 @@
 import Layout from '../components/Layout';
 import { FC } from 'react';
-import ProgrammingLanguages from '../components/ProgrammingLanguages';
-import Technologies from '../components/Technologies';
-import CardPannel from '../components/CardPannel';
+import ProgrammingLanguages from '../components/About/ProgrammingLanguages';
+import Technologies from '../components/About/Technologies';
+import { CardPannel } from '../components/About';
+import Tools from '../components/About/Tools';
 
 const About: FC = () => {
   return (
@@ -17,6 +18,13 @@ const About: FC = () => {
           <h1 className="mt-4 text-2xl font-semibold font-mono">
             Who Am I?
           </h1>
+          <p className="mt-4 font-mono">
+            My name is <b>Mohammad Mehran Shahidi</b>. I am a{' '}
+            <b>Software Engineer</b> who know how to work with modern
+            tech stack effectively to create scalable and efficient{' '}
+            <b>websites</b>. I am interested in writing about
+            different things and explain them in simple words.
+          </p>
         </div>
         <div className="px-8 py-4">
           <h1 className="mt-4 text-2xl font-semibold font-mono">
@@ -28,6 +36,9 @@ const About: FC = () => {
         </CardPannel>
         <CardPannel>
           <Technologies />
+        </CardPannel>
+        <CardPannel>
+          <Tools />
         </CardPannel>
       </div>
     </Layout>

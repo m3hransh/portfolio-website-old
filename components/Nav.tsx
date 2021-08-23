@@ -22,21 +22,21 @@ function DarkModeSwitch({
   return (
     <Switch.Group>
       <div className={`${className} flex items-center`}>
-        <Switch.Label className="mr-2 dark:text-gray-300">
+        <Switch.Label className="mr-2 dark:text-main-dark">
           Dark Mode
         </Switch.Label>
         <Switch
           checked={enabled}
           onChange={setEnabled}
           className={`${
-            enabled ? 'bg-blue-600' : 'bg-gray-200'
+            enabled ? 'bg-primary-600' : 'bg-main-200'
           } relative inline-flex items-center h-6 rounded-full w-11`}
         >
           <span className="sr-only">Enable notifications</span>
           <span
             className={`${
               enabled ? 'translate-x-6' : 'translate-x-1'
-            } inline-block w-4 h-4 transform bg-white rounded-full`}
+            } inline-block w-4 h-4 transform bg-main-700 dark:bg-main-50 rounded-full`}
           />
         </Switch>
       </div>
@@ -73,15 +73,15 @@ export default function Navbar() {
   }, [enabled]);
 
   return (
-    <Disclosure as="nav" className="dark:bg-gray-800">
+    <Disclosure as="nav" className="">
       {({ open }) => (
         <div className="h-16">
-          <div className="fixed top-0 opacity-95 inset-x-0 bg-gray-50 dark:bg-gray-900 z-50">
+          <div className="fixed top-0 opacity-95 inset-x-0 bg-background-100 dark:bg-background-800 z-50">
             <div className="max-w-3xl mx-auto px-2 sm:px-6 ">
               <div className="relative flex items-center justify-between h-16">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button*/}
-                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-main  hover:text-main hover:bg-main focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
                       <AiOutlineClose
@@ -111,8 +111,8 @@ export default function Navbar() {
                           <a
                             className={classNames(
                               item.current
-                                ? 'bg-gray-900 text-white'
-                                : 'dark:text-gray-300 hover:bg-gray-700 hover:text-white',
+                                ? 'bg-background-200  dark:bg-background-900'
+                                : 'hover:bg-background-200 dark:hover:bg-background-900',
                               'px-3 py-2 rounded-md text-sm font-medium',
                             )}
                             aria-current={
