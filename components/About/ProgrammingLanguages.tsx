@@ -11,7 +11,7 @@ import { Bar } from '.';
 const ProgrammingLanguages: FC = () => {
   return (
     <>
-      <h1 className="text-xl  text-primary-700 dark:text-primary-500 font-bold ">
+      <h1 className="text-xl  text-primary-700 dark:text-primary-500 font-bold">
         Programming Langauges
       </h1>
       {/* //JavaScript */}

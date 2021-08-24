@@ -3,8 +3,8 @@ import Layout from '../../components/Layout';
 import {
   getAllPostsWithSlug,
   getPostAndMorePosts,
-  imageLoader,
 } from '../../lib/posts';
+import { imageLoader } from '../../lib/utils';
 import Head from 'next/head';
 import Date from '../../components/Date';
 import utilStyles from '../../styles/utils.module.css';
@@ -75,9 +75,9 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
           </Head>
           <main className="max-w-3xl w-4/5 mx-auto">
             <article>
-              <div className="w-full h-100 ">
+              <div className="w-full">
                 <Image
-                  className="object-cover object-center rounded-lg"
+                  className="object-cover object-center d rounded-lg"
                   loader={imageLoader}
                   src={post.coverImage.url}
                   width="1000"

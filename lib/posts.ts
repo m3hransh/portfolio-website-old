@@ -1,4 +1,4 @@
-import { ImageLoader } from 'next/image';
+import { fetchAPI } from './utils';
 export interface Author {
   name: string;
   picture: { url: string };
@@ -22,40 +22,6 @@ export interface PostData extends PostView {
 export interface PostMorePosts {
   post: PostData;
   morePosts: PostView[];
-}
-
-export const imageLoader: ImageLoader = (props) => {
-  return (process.env.NEXT_PUBLIC_IMAGE_PATH as string) + props.src;
-};
-
-async function fetchAPI(
-  query: string,
-  { variables, preview }: { variables?: any; preview?: boolean } = {},
-) {
-  const res = await fetch(process.env.GRAPHCMS_PROJECT_API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${
-        preview
-          ? process.env.GRAPHCMS_DEV_AUTH_TOKEN
-          : process.env.GRAPHCMS_PROD_AUTH_TOKEN
-      }`,
-    },
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  });
-  const json = await res.json();
-
-  if (json.errors) {
-    console.log(process.env.NEXT_EXAMPLE_CMS_GCMS_PROJECT_ID);
-    console.error(json.errors);
-    throw new Error('Failed to fetch API');
-  }
-
-  return json.data;
 }
 
 export async function getAllPostsWithSlug(): Promise<

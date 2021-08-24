@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import Date from './Date';
-import { PostView, imageLoader } from '../lib/posts';
+import { PostView } from '../lib/posts';
 import Image from 'next/image';
 import { IoCalendar, IoHourglassOutline } from 'react-icons/io5';
+import { imageLoader } from '../lib/utils';
 
 interface PostItemProps {
   postView: PostView;

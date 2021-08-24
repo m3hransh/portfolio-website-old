@@ -6,6 +6,7 @@ import {
   SiNextDotJs,
   SiReact,
 } from 'react-icons/si';
+import { Bar } from '.';
 
 interface TechnologiesProps {
   className?: string;
@@ -13,7 +14,7 @@ interface TechnologiesProps {
 const Technologies: FC<TechnologiesProps> = ({ className }) => {
   return (
     <>
-      <h1 className="text-xl  text-indigo-700 font-bold ">
+      <h1 className="text-xl text-primary-700 dark:text-primary-500 font-bold">
         Technologies
       </h1>
       {/* //JavaScript */}
@@ -21,34 +22,25 @@ const Technologies: FC<TechnologiesProps> = ({ className }) => {
         className="text-gray-800 dark:text-gray-300 mt-4"
         size="2em"
       />
-      <div className="w-full h-2 bg-gray-500 rounded-full mt-3">
-        <div className="w-3/4 h-full text-center text-xs text-white bg-gray-800 dark:bg-gray-300 rounded-full"></div>
-      </div>
+      <Bar className="w-3/4" />
       {/* React */}
       <SiReact className="text-blue-600 mt-4" size="2em" />
-      <div className="w-full h-2 bg-gray-500 rounded-full mt-3">
-        <div className="w-3/4 h-full text-center text-xs text-white bg-blue-600 rounded-full"></div>
-      </div>
+      <Bar className="w-3/4" />
       {/* Next */}
       <SiNextDotJs
         className="text-gray-800 dark:text-gray-300 mt-4"
         size="2em"
       />
-      <div className="w-full h-2 bg-gray-500 rounded-full mt-3">
-        <div className="w-3/4 h-full text-center text-xs text-white bg-gray-800 dark:bg-gray-300 rounded-full"></div>
-      </div>
+      <Bar className="w-3/4" />
       {/* GraphQL */}
       <SiGraphql className="text-pink-500 mt-4" size="2em" />
-      <div className="w-full h-2 bg-gray-500 rounded-full mt-3">
-        <div className="w-3/5 h-full text-center text-xs text-white bg-pink-500 rounded-full"></div>
-      </div>
+      <Bar className="w-3/5" />
+      {/* Apollo */}
       <SiApollographql
         className="text-gray-800 dark:text-gray-300 mt-4"
         size="2em"
       />
-      <div className="w-full h-2 bg-gray-500 rounded-full mt-3">
-        <div className="w-3/5 h-full text-center text-xs text-white bg-gray-800 dark:bg-gray-300 rounded-full"></div>
-      </div>
+      <Bar className="w-3/5" />
     </>
   );
 };

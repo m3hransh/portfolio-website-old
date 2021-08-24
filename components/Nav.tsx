@@ -49,7 +49,7 @@ export default function Navbar() {
   const [navigation, setNavigation] = useState([
     { name: 'Home', href: '/', current: true },
     { name: 'About', href: '/about', current: false },
-    { name: 'Projects', href: '#', current: false },
+    { name: 'Projects', href: '/projects', current: false },
     { name: 'Blog', href: '#', current: false },
   ]);
 

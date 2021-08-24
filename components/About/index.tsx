@@ -22,7 +22,7 @@ export const Bar = ({ className }) => {
   return (
     <div className="w-full h-2 bg-gray-500 rounded-full mt-3">
       <div
-        className={`${className} h-full text-center text-xs text-main-50 bg-main-900 dark:bg-main-300 rounded-full`}
+        className={`${className} h-full text-center text-xs text-main-50 bg-accent-400 rounded-full`}
       ></div>
     </div>
   );
