@@ -73,7 +73,7 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
           <Head>
             <title>{post.title}</title>
           </Head>
-          <main className="max-w-3xl w-4/5 mx-auto">
+          <main className="max-w-3xl w-11/12 mx-auto">
             <article>
               <div className="w-full">
                 <Image

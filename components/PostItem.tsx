@@ -31,7 +31,7 @@ const PostItem: FC<PostItemProps> = ({ postView }) => {
             {postView.title}
           </h1>
           <p className="text-main-400">
-            {postView.excerpt.slice(0, 100)}...
+            {postView.excerpt.slice(0, 200)}...
           </p>
         </div>
       </div>

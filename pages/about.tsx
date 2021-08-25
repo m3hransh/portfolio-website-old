@@ -7,6 +7,7 @@ import Tools from '../components/About/Tools';
 import SocialFollow, {
   YouTubeLink,
 } from '../components/SocialFollow';
+import Head from 'next/head';
 
 // this should be put on cms
 const aboutContent = (
@@ -34,9 +35,12 @@ const aboutContent = (
 const About: FC = () => {
   return (
     <Layout>
+      <Head>
+        <title>About</title>
+      </Head>
       <div className="max-w-4xl w-5/6 mx-auto grid lg:space-x-4 space-y-4 lg:grid-cols-2 mb-5">
         <div className="px-8 py-4">
-          <div className="flex items-center space-x-8">
+          <div className="flex flex-col items-start gap-3 lg:flex-row lg:items-center lg:space-x-8">
             <img
               src="/images/profile.svg"
               className="h-24 "
