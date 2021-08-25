@@ -22,7 +22,7 @@ function DarkModeSwitch({
   return (
     <Switch.Group>
       <div className={`${className} flex items-center`}>
-        <Switch.Label className="mr-2 dark:text-main-dark">
+        <Switch.Label className="mr-2 font-semibold dark:text-main-dark">
           Dark Mode
         </Switch.Label>
         <Switch
@@ -36,7 +36,7 @@ function DarkModeSwitch({
           <span
             className={`${
               enabled ? 'translate-x-6' : 'translate-x-1'
-            } inline-block w-4 h-4 transform bg-main-700 dark:bg-main-50 rounded-full`}
+            } inline-block w-4 h-4 transform duration-300 ease-in-out bg-main-700 dark:bg-main-50 rounded-full`}
           />
         </Switch>
       </div>
@@ -77,10 +77,10 @@ export default function Navbar() {
       {({ open }) => (
         <div className="h-16">
           <div className="fixed top-0 opacity-95 inset-x-0 bg-background-100 dark:bg-background-800 z-50">
-            <div className="max-w-3xl mx-auto px-2 sm:px-6 ">
+            <div className="max-w-4xl mx-auto px-2 sm:px-6 ">
               <div className="relative flex items-center justify-between h-16">
+                {/* Mobile menu button*/}
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                  {/* Mobile menu button*/}
                   <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-main  hover:text-main hover:bg-main focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
@@ -96,14 +96,8 @@ export default function Navbar() {
                     )}
                   </Disclosure.Button>
                 </div>
+                {/* Desktop Navbar */}
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                  {/* <div className="flex-shrink-0 flex items-center">
-                    <img
-                      className="sm:block h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                      alt="Workflow"
-                    />
-                  </div> */}
                   <div className="hidden sm:block ">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
@@ -113,7 +107,7 @@ export default function Navbar() {
                               item.current
                                 ? 'bg-background-200  dark:bg-background-900'
                                 : 'hover:bg-background-200 dark:hover:bg-background-900',
-                              'px-3 py-2 rounded-md text-sm font-medium',
+                              'px-3 py-2 rounded-md  font-semibold',
                             )}
                             aria-current={
                               item.current ? 'page' : undefined
@@ -134,7 +128,7 @@ export default function Navbar() {
                 </div>
               </div>
             </div>
-
+            {/* Phone menu */}
             <Disclosure.Panel className="sm:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navigation.map((item) => (
@@ -144,7 +138,7 @@ export default function Navbar() {
                         item.current
                           ? 'bg-gray-900 text-white'
                           : 'dark:text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'block px-3 py-2 rounded-md text-base font-medium',
+                        'block px-3 py-2 rounded-md  font-semibold',
                       )}
                       aria-current={item.current ? 'page' : undefined}
                     >

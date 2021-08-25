@@ -14,7 +14,7 @@ interface TechnologiesProps {
 const Technologies: FC<TechnologiesProps> = ({ className }) => {
   return (
     <>
-      <h1 className="text-xl text-primary-700 dark:text-primary-500 font-bold">
+      <h1 className="text-2xl text-secondary-600 dark:text-secondary-400 font-bold">
         Technologies
       </h1>
       {/* //JavaScript */}

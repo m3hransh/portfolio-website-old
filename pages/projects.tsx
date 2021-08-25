@@ -112,7 +112,7 @@ export const getStaticProps: GetStaticProps = async ({
 function Projects({ allProjects }) {
   return (
     <Layout>
-      <main className="max-w-3xl w-4/5 mx-auto mb-5">
+      <main className="max-w-4xl w-4/5 mx-auto mb-5">
         <div className="grid lg:grid-cols-2 lg:gap-3">
           {allProjects?.map((projectView: ProjectView) => (
             <Link key={projectView.id} href={projectView.link}>

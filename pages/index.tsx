@@ -24,11 +24,11 @@ function Home({ allPostsData }) {
           <title>{siteTitle}</title>
         </Head>
         <header className="">
-          <Hero className="max-w-3xl mx-auto" />
+          <Hero className="max-w-4xl mx-auto" />
         </header>
-        <main className="max-w-3xl mx-auto">
+        <main className="max-w-4xl mx-auto">
           <section className="px-12 py-8">
-            <h2 className="text-4xl font-bold tracking-wider text-primary-700 dark:text-primary-500 mt-4 font-serif">
+            <h2 className="text-4xl font-bold tracking-wider text-secondary-600 dark:text-secondary-500 mt-4 font-serif">
               Blog
             </h2>
             <BlogItems allPostsData={allPostsData} className="mt-6" />

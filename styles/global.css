@@ -21,4 +21,7 @@
   .socialIcon {
     @apply hover:text-indigo-700 hover:-translate-y-0.5 transform transition;
   }
+  p a {
+    @apply font-semibold text-primary-700 dark:text-primary-400 hover:underline hover:text-primary-600;
+  }
 }

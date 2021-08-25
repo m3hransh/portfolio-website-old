@@ -20,8 +20,8 @@ const ProjectItem: FC<ProjectItemProps> = ({ projectView }) => {
 
       "
     >
-      <div className="flex space-x-6">
-        <div className="relative flex-none hidden lg:block w-24 h-24 ">
+      <div className="flex flex-row-reverse justify-between ">
+        <div className="relative flex-none  lg:block w-24 h-24 ">
           <Image
             loader={imageLoader}
             src={projectView.coverImage.url}
