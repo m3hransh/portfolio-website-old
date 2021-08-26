@@ -43,8 +43,8 @@ export async function getPostAndMorePosts(
 ): Promise<PostMorePosts> {
   const data = await fetchAPI(
     `
-    query PostBySlug($slug: String!) {
-      post: postBySlug( slug: $slug) {
+    query PostBySlug($slug: String!, $publicationState: PublicationState!) {
+      post: postBySlug( slug: $slug, publicationState: $publicationState ) {
         title
         slug
         content
@@ -82,7 +82,7 @@ export async function getPostAndMorePosts(
     {
       preview,
       variables: {
-        // stage: preview ? 'PREVIEW' : 'LIVE',
+        publicationState: preview ? 'PREVIEW' : 'LIVE',
         slug,
       },
     },
@@ -95,8 +95,8 @@ export async function getAllPostsForHome(
 ): Promise<PostView[]> {
   const data = await fetchAPI(
     `
-    {
-     posts(sort: "date:desc", limit: 20) {
+    query Posts($publicationState: PublicationState!){
+     posts(sort: "date:desc", limit: 20, publicationState:$publicationState) {
         title
         slug
         excerpt
@@ -111,10 +111,15 @@ export async function getAllPostsForHome(
             url
           }
         }
-        }
+      }
     }
   `,
-    { preview },
+    {
+      preview,
+      variables: {
+        publicationState: preview ? 'PREVIEW' : 'LIVE',
+      },
+    },
   );
   return data.posts;
 }
