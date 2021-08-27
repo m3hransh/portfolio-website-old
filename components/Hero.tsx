@@ -5,15 +5,15 @@ import Link from 'next/link';
 const aboutContent = (
   <div>
     <h1 className="text-2xl sm:text-3xl">
-      Hello there,
+      Hello there
       <br />
-      my name is{' '}
+      My name is{' '}
       <span className="text-indigo-500 font-semibold">
-        Mohammad Mehran Shahidi.
+        Mohammad Mehran Shahidi
       </span>{' '}
       <br />I am a{' '}
-      <span className="font-semibold">Software Engineer.</span> <br />
-      Welcome to my Website.
+      <span className="font-semibold">Software Engineer</span> <br />
+      Welcome to my Website
     </h1>
   </div>
 );

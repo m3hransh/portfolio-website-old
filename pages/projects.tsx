@@ -28,7 +28,7 @@ function Projects({ allProjects, preview }) {
           <div className="grid lg:grid-cols-2 lg:gap-3">
             {allProjects?.map((projectView: ProjectView) => (
               <Link key={projectView.id} href={projectView.link}>
-                <a>
+                <a target="_blank">
                   <ProjectItem projectView={projectView} />
                 </a>
               </Link>

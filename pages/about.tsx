@@ -11,7 +11,7 @@ import Head from 'next/head';
 
 // this should be put on cms
 const aboutContent = (
-  <div className="mt-4 font-mono">
+  <div className="mt-4 font-mono prose dark:prose-dark sm:prose-xl">
     <p>
       My name is <b>Mohammad Mehran Shahidi</b>. I am a{' '}
       <b>Software Engineer</b> who knows how to work with modern tech
@@ -55,10 +55,10 @@ const About: FC = () => {
           {aboutContent}
         </div>
         <CardPannel>
-          <ProgrammingLanguages />
+          <Technologies />
         </CardPannel>
         <CardPannel>
-          <Technologies />
+          <ProgrammingLanguages />
         </CardPannel>
         <CardPannel>
           <Tools />
