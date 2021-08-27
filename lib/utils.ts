@@ -8,7 +8,7 @@ export async function fetchAPI(
   query: string,
   { variables, preview }: { variables?: any; preview?: boolean } = {},
 ) {
-  const res = await fetch(process.env.NEXT_PUBLIC__API, {
+  const res = await fetch(process.env.NEXT_PUBLIC_API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
