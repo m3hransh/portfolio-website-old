@@ -8,7 +8,7 @@ services:
     ports:
       - '${EXPOSED_PORT}:3000'
 
-  networks:
-    mehrancms:
-      external: true
-      name: mehranCMS-networks
+networks:
+  mehrancms:
+    external: true
+    name: mehranCMS-networks
