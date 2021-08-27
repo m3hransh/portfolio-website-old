@@ -1,9 +1,14 @@
-version: '3'
+version: '3.5'
 
 services:
   front:
     build: .
     networks:
-      - my-blog-cms_mehran-networks
+      - mehrancms
     ports:
       - '${EXPOSED_PORT}:3000'
+
+  networks:
+    mehrancms:
+      external: true
+      name: mehranCMS-networks
