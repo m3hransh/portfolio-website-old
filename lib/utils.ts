@@ -8,24 +8,11 @@ export async function fetchAPI(
   query: string,
   { variables, preview }: { variables?: any; preview?: boolean } = {},
 ) {
-  let apiUrl: string;
-  let token: string;
-  if (preview) {
-    const { serverRuntimeConfig } = getConfig();
-    apiUrl = serverRuntimeConfig.CMS_API;
-    token = serverRuntimeConfig.CMS_AUTH_TOKEN;
-    console.log(`API for Preview: ${apiUrl}`);
-  } else {
-    apiUrl = process.env.BUILD_CMS_API;
-    token = process.env.CMS_AUTH_TOKEN;
-    console.log(`API at build time: ${apiUrl}`);
-  }
-
-  const res = await fetch(apiUrl, {
+  const res = await fetch(process.env.NEXT_PUBLIC_CMS_API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_CMS_AUTH_TOKEN}`,
     },
     body: JSON.stringify({
       query,
