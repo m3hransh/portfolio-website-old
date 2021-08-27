@@ -65,7 +65,7 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout>
+    <Layout preview={preview}>
       {router.isFallback ? (
         <h1 className={utilStyles.headingXl}>Loading...</h1>
       ) : (

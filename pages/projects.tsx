@@ -9,107 +9,14 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
 }) => {
   const allProjects: ProjectView[] = await getAllProjects(preview);
-  //   {
-  //     id: '1',
-  //     title: 'Twitter-clone',
-  //     excerpt:
-  //       'Implementing Twitter clone using React, GraphQL, and Prisma in typescript. The purpose of the project is to become comfortable with the advanced features that React and GraphQL offer.',
-  //     link: 'https://github.com/m3hransh/twitter-clone',
-  //     coverImage: {
-  //       url: '/uploads/10wmt_super_Jumbo_v4_7a2e7318a9.jpg',
-  //     },
-  //     startDate: '2021-08-04',
-  //     lastUpdate: '2021-08-24',
-  //     tasks: 10,
-  //     completedTasks: 6,
-  //     contributers: [
-  //       {
-  //         name: 'Mehran Shahidi',
-  //         title: 'Software Engineer',
-  //         picture: {
-  //           url: '/uploads/face_5fa04cd995.svg',
-  //         },
-  //       },
-  //       {
-  //         name: 'Mehrdad Shahidi',
-  //         title: 'DevOps Engineer',
-  //         picture: {
-  //           url: '/uploads/m3d_8db56665be.jpg',
-  //         },
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     id: '1',
-  //     title: 'Twitter-clone',
-  //     excerpt:
-  //       'Implementing Twitter clone using React, GraphQL, and Prisma in typescript. The purpose of the project is to become comfortable with the advanced features that React and GraphQL offer.',
-  //     link: 'https://github.com/m3hransh/twitter-clone',
-  //     coverImage: {
-  //       url: '/uploads/10wmt_super_Jumbo_v4_7a2e7318a9.jpg',
-  //     },
-  //     startDate: '2021-08-04',
-  //     lastUpdate: '2021-08-24',
-  //     tasks: 10,
-  //     completedTasks: 6,
-  //     contributers: [
-  //       {
-  //         name: 'Mehran Shahidi',
-  //         title: 'Software Engineer',
-  //         picture: {
-  //           url: '/uploads/face_5fa04cd995.svg',
-  //         },
-  //       },
-  //       {
-  //         name: 'Mehrdad Shahidi',
-  //         title: 'DevOps Engineer',
-  //         picture: {
-  //           url: '/uploads/m3d_8db56665be.jpg',
-  //         },
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     id: '1',
-  //     title: 'Twitter-clone',
-  //     excerpt:
-  //       'Implementing Twitter clone using React, GraphQL, and Prisma in typescript. The purpose of the project is to become comfortable with the advanced features that React and GraphQL offer.',
-  //     link: 'https://github.com/m3hransh/twitter-clone',
-  //     coverImage: {
-  //       url: '/uploads/10wmt_super_Jumbo_v4_7a2e7318a9.jpg',
-  //     },
-  //     startDate: '2021-08-04',
-  //     lastUpdate: '2021-08-24',
-  //     tasks: 10,
-  //     completedTasks: 6,
-  //     contributers: [
-  //       {
-  //         name: 'Mehran Shahidi',
-  //         title: 'Software Engineer',
-  //         picture: {
-  //           url: '/uploads/face_5fa04cd995.svg',
-  //         },
-  //       },
-  //       {
-  //         name: 'Mehrdad Shahidi',
-  //         title: 'DevOps Engineer',
-  //         picture: {
-  //           url: '/uploads/m3d_8db56665be.jpg',
-  //         },
-  //       },
-  //     ],
-  //   },
-  // ];
-  // By returning { props: { posts } }, the Blog component
-  // will receive 'posts' as a prop at build time
   return {
-    props: { allProjects },
+    props: { allProjects, preview },
   };
 };
 
-function Projects({ allProjects }) {
+function Projects({ allProjects, preview }) {
   return (
-    <Layout>
+    <Layout preview={preview}>
       <Head>
         <title>Projects</title>
       </Head>

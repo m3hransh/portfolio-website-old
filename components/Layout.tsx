@@ -9,14 +9,14 @@ export const siteTitle = 'Mehran Shahidi';
 
 export default function Layout({
   children,
-  home,
+  preview,
 }: {
   children: React.ReactNode;
-  home?: Boolean;
+  preview?: Boolean;
 }) {
   return (
     <>
-      <Navbar />
+      <Navbar preview={preview} />
       <Head>
         <link rel="icon" type="image/png" href="images/profile.png" />
         <meta

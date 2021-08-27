@@ -12,14 +12,14 @@ export const getStaticProps: GetStaticProps = async ({
   // By returning { props: { posts } }, the Blog component
   // will receive 'posts' as a prop at build time
   return {
-    props: { allPostsData },
+    props: { allPostsData, preview },
   };
 };
 
-function Home({ allPostsData }) {
+function Home({ allPostsData, preview }) {
   return (
     <>
-      <Layout home>
+      <Layout preview={preview}>
         <Head>
           <title>{siteTitle}</title>
         </Head>

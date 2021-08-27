@@ -24,9 +24,9 @@ export async function getAllProjects(
 ): Promise<ProjectView[]> {
   const data = await fetchAPI(
     `
-    query {
+    query($publicationState: PublicationState!){
 
-    projects{
+    projects(publicationState:$publicationState){
       id
       title
       excerpt
@@ -48,6 +48,12 @@ export async function getAllProjects(
   }
     }
     `,
+    {
+      preview,
+      variables: {
+        publicationState: preview ? 'PREVIEW' : 'LIVE',
+      },
+    },
   );
   return data.projects;
 }

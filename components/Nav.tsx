@@ -43,7 +43,7 @@ function DarkModeSwitch({
     </Switch.Group>
   );
 }
-export default function Navbar() {
+export default function Navbar({ preview }) {
   const [enabled, setEnabled] = useState(true);
   const router = useRouter();
   const [navigation, setNavigation] = useState([
@@ -120,11 +120,18 @@ export default function Navbar() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute inset-y-0 right-0 hidden sm:flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
+                <div className="absolute inset-y-0 right-0 hidden sm:flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-5">
                   <DarkModeSwitch
                     enabled={enabled}
                     setEnabled={setEnabled}
                   />
+                  {preview && (
+                    <Link href="/api/clearPreview">
+                      <a className=" btn text-sm text-main-800 bg-secondary-400">
+                        Preview Off
+                      </a>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
@@ -151,6 +158,13 @@ export default function Navbar() {
                   setEnabled={setEnabled}
                   className="px-3 py-2 rounded-md text-base font-medium"
                 />
+                {preview && (
+                  <Link href="/api/clearPreview">
+                    <a className=" btn text-sm text-main-800 bg-secondary-400">
+                      Preview Off
+                    </a>
+                  </Link>
+                )}
               </div>
             </Disclosure.Panel>
           </div>

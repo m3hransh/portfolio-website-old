@@ -4,6 +4,7 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  res.setPreviewData({});
+  res.clearPreviewData();
+
   res.redirect('/');
 }
