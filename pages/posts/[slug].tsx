@@ -66,15 +66,17 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
   }
   return (
     <Layout preview={preview}>
-      {router.isFallback ? (
-        <h1 className={utilStyles.headingXl}>Loading...</h1>
-      ) : (
-        <>
-          <Head>
-            <title>{post.title}</title>
-          </Head>
-          <main className="max-w-3xl w-11/12 mx-auto">
-            <article>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
+      <main className="max-w-3xl w-11/12 mx-auto">
+        {router.isFallback ? (
+          <h1 className="text-4xl lg:text-6xl my-4 lg:mt-6 text-primary-500 dark:text-secondary-400 font-extrabold">
+            Loading...
+          </h1>
+        ) : (
+          <>
+            <article className="">
               <div className="w-full">
                 <Image
                   className="object-cover object-center d rounded-lg"
@@ -85,7 +87,9 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
                   alt="Post picture"
                 />
               </div>
-              <h1 className={utilStyles.headingXl}>{post.title}</h1>
+              <h1 className="text-4xl lg:text-6xl my-4 lg:mt-6 text-primary-500 dark:text-secondary-400 font-extrabold">
+                {post.title}
+              </h1>
               <div className="flex items-center space-x-3">
                 <Image
                   className="rounded-full"
@@ -111,23 +115,26 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
                   </div>
                 </div>
               </div>
-              <Markdown className="mt-5" markdown={post.content} />
-            </article>
-            <h1 className="mt-8 text-xl font-bold tracking-wide text-secondary-500 dark:text-secondary-400 font-serif">
-              More posts
-            </h1>
-            <BlogItems allPostsData={morePosts} />
-            <div
-              className="text-secondary-500 dark:text-secondary-400 text-lg hover:text-indigo-900
+              <Markdown
+                className="mt-5 prose dark:prose-dark sm:prose-xl"
+                markdown={post.content}
+              />
+              <h1 className="mt-8 text-2xl lg:text-4xl font-bold tracking-wide text-primary-500 dark:text-secondary-400 font-serif">
+                More posts
+              </h1>
+              <BlogItems allPostsData={morePosts} />
+              <div
+                className="text-primary-500 dark:text-secondary-400 text-xl lg:text-2xl hover:text-indigo-900
            dark:hover:text-indigo-400 mt-8 transition  duration-500 ease-in-out mb-8 "
-            >
-              <Link href="/">
-                <a>← Back to home</a>
-              </Link>
-            </div>
-          </main>
-        </>
-      )}
+              >
+                <Link href="/">
+                  <a>← Back to home</a>
+                </Link>
+              </div>
+            </article>
+          </>
+        )}
+      </main>
     </Layout>
   );
 };
