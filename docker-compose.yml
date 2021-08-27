@@ -3,5 +3,7 @@ version: '3'
 services:
   front:
     build: .
+    networks:
+      - my-blog-cms_mehran-networks
     ports:
       - '${EXPOSED_PORT}:3000'
