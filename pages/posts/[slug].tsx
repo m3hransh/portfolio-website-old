@@ -66,9 +66,6 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
   }
   return (
     <Layout preview={preview}>
-      <Head>
-        <title>{post.title}</title>
-      </Head>
       <main className="max-w-3xl w-11/12 mx-auto">
         {router.isFallback ? (
           <h1 className="text-4xl lg:text-6xl my-4 lg:mt-6 text-primary-500 dark:text-secondary-400 font-extrabold">
@@ -76,6 +73,9 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
           </h1>
         ) : (
           <>
+            <Head>
+              <title>{post.title}</title>
+            </Head>
             <article className="">
               <div className="w-full">
                 <Image
