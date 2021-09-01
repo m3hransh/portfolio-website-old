@@ -4,6 +4,7 @@ import { PostView } from '../lib/posts';
 import Image from 'next/image';
 import { IoCalendar, IoHourglassOutline } from 'react-icons/io5';
 import { imageLoader } from '../lib/utils';
+import Tags from '../components/Tags';
 
 interface PostItemProps {
   postView: PostView;
@@ -13,7 +14,7 @@ const PostItem: FC<PostItemProps> = ({ postView }) => {
   return (
     <div
       className="bg-main-50 mt-4 transition transform duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:bg-main-200 
-    dark:hover:bg-main-700 dark:bg-main-900 p-6 shadow-lg rounded-lg flex justify-between items-center"
+    dark:hover:bg-main-700 dark:bg-background-800 p-6 shadow-lg rounded-lg flex flex-col justify-between sm:flex-row"
     >
       <div className="flex flex-1">
         <div className="mr-4 relative flex-none hidden lg:block w-24 h-24 ">
@@ -26,35 +27,44 @@ const PostItem: FC<PostItemProps> = ({ postView }) => {
             className="rounded-lg shadow"
           />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 flex flex-col">
           <h1 className="text-xl font-medium text-gray-900 dark:text-main-300">
             {postView.title}
           </h1>
           <p className="text-main-400">
             {postView.excerpt.slice(0, 200)}...
           </p>
-        </div>
-      </div>
-      <div className="flex flex-col ml-2 flex-none items-center">
-        <div className="relative w-12 h-12 ">
-          <Image
-            loader={imageLoader}
-            className="shadow rounded-full"
-            src={postView.author.picture?.url}
-            alt="Avatar"
-            layout="fill"
+          <Tags
+            className="my-auto hidden sm:block"
+            tags={postView.tags}
           />
         </div>
-        <p className="text-xs">{postView.author.name}</p>
-        <div className="flex mt-2 flex-col items-start">
-          <small className="text-main-500 flex items-center space-x-1">
-            <IoCalendar className="inline" />
-            <Date dateString={postView.date} />
-          </small>
-          <small className="text-main-500 flex items-center space-x-1">
-            <IoHourglassOutline className="inline" />
-            <p>{postView.readTime} min read</p>
-          </small>
+      </div>
+      {/* Tags and profile data */}
+      <div className="flex">
+        {/* This will be hidden after sm */}
+        <Tags className="my-auto sm:hidden" tags={postView.tags} />
+        <div className="flex flex-col ml-2 flex-none items-center">
+          <div className="relative w-12 h-12 ">
+            <Image
+              loader={imageLoader}
+              className="shadow rounded-full"
+              src={postView.author.picture?.url}
+              alt="Avatar"
+              layout="fill"
+            />
+          </div>
+          <p className="text-xs">{postView.author.name}</p>
+          <div className="flex mt-2 flex-col items-start">
+            <small className="text-main-500 flex items-center space-x-1">
+              <IoCalendar className="inline" />
+              <Date dateString={postView.date} />
+            </small>
+            <small className="text-main-500 flex items-center space-x-1">
+              <IoHourglassOutline className="inline" />
+              <p>{postView.readTime} min read</p>
+            </small>
+          </div>
         </div>
       </div>
     </div>

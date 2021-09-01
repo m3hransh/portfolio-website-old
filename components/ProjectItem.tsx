@@ -3,7 +3,12 @@ import Date from './Date';
 import { ProjectView } from '../lib/projects';
 import Image from 'next/image';
 import { imageLoader } from '../lib/utils';
-import { IoCalendar, IoHourglassOutline } from 'react-icons/io5';
+import {
+  IoCalendar,
+  IoRocketOutline,
+  IoLogoGithub,
+} from 'react-icons/io5';
+import Tags from './Tags';
 
 interface ProjectItemProps {
   projectView: ProjectView;
@@ -12,14 +17,14 @@ interface ProjectItemProps {
 const ProjectItem: FC<ProjectItemProps> = ({ projectView }) => {
   return (
     <div
-      className="bg-main-50 mt-4 transition transform duration-500 
+      className="bg-main-100 mt-4 transition transform duration-500 
         ease-in-out hover:-translate-y-1 hover:scale-105 
       hover:bg-main-200 dark:hover:bg-background-600 dark:bg-background-800 p-6 
         shadow-lg rounded-lg flex flex-col justify-between 
         space-y-2
-
       "
     >
+      {/* Image, title and contributer */}
       <div className="flex flex-row-reverse justify-between ">
         <div className="relative flex-none  lg:block w-24 h-24 ">
           <Image
@@ -39,20 +44,25 @@ const ProjectItem: FC<ProjectItemProps> = ({ projectView }) => {
             Contributers:
           </small>
           <div className="flex -space-x-2">
-            {projectView.contributers.map((contributer) => (
-              <div className="relative w-8 h-8 ">
-                <Image
-                  loader={imageLoader}
-                  className="shadow rounded-full"
-                  src={contributer.picture?.url}
-                  alt="Avatar"
-                  layout="fill"
-                />
-              </div>
-            ))}
+            {projectView.contributers &&
+              projectView.contributers.map((contributer) => (
+                <div
+                  className="relative w-8 h-8 "
+                  key={contributer.name}
+                >
+                  <Image
+                    loader={imageLoader}
+                    className="shadow rounded-full"
+                    src={contributer.picture?.url}
+                    alt="Avatar"
+                    layout="fill"
+                  />
+                </div>
+              ))}
           </div>
         </div>
       </div>
+      {/* Dates */}
       <div className="flex flex-col ">
         <small className="text-main-500 flex items-center space-x-1">
           <IoCalendar className="inline mr-2" /> Starting Date:{' '}
@@ -65,11 +75,12 @@ const ProjectItem: FC<ProjectItemProps> = ({ projectView }) => {
       </div>
       <p>
         Task done:{' '}
-        <span className="text-accent-400">
+        <span className="text-accent-400 font-bold">
           {projectView.completedTasks}
         </span>
         /{projectView.tasks}
       </p>
+      {/* Progress bar */}
       <div className="w-full h-2 bg-gray-200 rounded-full mt-2">
         <div
           style={{
@@ -84,6 +95,33 @@ const ProjectItem: FC<ProjectItemProps> = ({ projectView }) => {
       <p className="text-main-400">
         {projectView.excerpt.slice(0, 100)}...
       </p>
+      <div className="flex">
+        {/* Links */}
+        <div className="flex flex-col">
+          {projectView.link && (
+            <a
+              href={projectView.link}
+              target="_blank"
+              className="linkPop hover:text-primary-400 flex items-center"
+            >
+              <IoLogoGithub className="inline mr-2 " />
+              <span>GitHub</span>
+            </a>
+          )}
+          {projectView.previewLink && (
+            <a
+              href={projectView.previewLink}
+              target="_blank"
+              className="linkPop hover:text-primary-400 flex items-center"
+            >
+              <IoRocketOutline className="inline mr-2 " />
+              <span>Preview Link</span>
+            </a>
+          )}
+        </div>
+        {/* Tags  */}
+        <Tags className="my-auto ml-auto" tags={projectView.tags} />
+      </div>
     </div>
   );
 };

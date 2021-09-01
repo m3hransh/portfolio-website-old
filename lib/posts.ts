@@ -14,6 +14,7 @@ export interface PostView {
   excerpt: string;
   date: string;
   readTime: number;
+  tags: { name: string; id: number }[];
 }
 
 export interface PostData extends PostView {
@@ -60,6 +61,10 @@ export async function getPostAndMorePosts(
             url
           }
         }
+        tags {
+          id 
+          name
+          }
       }
       morePosts: posts(sort: "date:desc", limit: 2, where: {slug_ncontains: [$slug]}) {
         title
@@ -76,6 +81,10 @@ export async function getPostAndMorePosts(
             url
           }
         }
+        tags {
+          id
+          name
+          }
       }
 }
   `,
@@ -110,6 +119,10 @@ export async function getAllPostsForHome(
           picture{
             url
           }
+        }
+        tags {
+          id
+          name
         }
       }
     }

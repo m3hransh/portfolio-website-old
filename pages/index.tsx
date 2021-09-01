@@ -28,7 +28,7 @@ function Home({ allPostsData, preview }) {
         </header>
         <main className="max-w-4xl mx-auto">
           <section className="px-12 py-8">
-            <h2 className="text-4xl font-bold tracking-wider text-secondary-600 dark:text-secondary-500 mt-4 font-serif">
+            <h2 className="text-4xl font-bold tracking-wider text-primary-600 dark:text-secondary-500 mt-4">
               Blog
             </h2>
             <BlogItems allPostsData={allPostsData} className="mt-6" />

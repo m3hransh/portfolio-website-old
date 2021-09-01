@@ -12,11 +12,13 @@ export interface ProjectView {
   excerpt: string;
   coverImage: { url: string };
   link: string;
+  previewLink: string;
   contributers: Contributer[];
   startDate: string;
   lastUpdate: string;
   tasks: number;
   completedTasks: number;
+  tags: { name: string; id: number }[];
 }
 
 export async function getAllProjects(
@@ -31,6 +33,7 @@ export async function getAllProjects(
       title
       excerpt
       link
+      previewLink
       coverImage{
         url
       }
@@ -44,6 +47,10 @@ export async function getAllProjects(
         picture{
           url
         }
+      }
+      tags{
+        name
+        id
       }
   }
     }
