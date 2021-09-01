@@ -1,4 +1,6 @@
 import { ImageLoader } from 'next/image';
+import configs from '../configs.json';
+
 export const imageLoader: ImageLoader = (props) => {
   return (process.env.NEXT_PUBLIC_IMAGE_PATH as string) + props.src;
 };
@@ -28,23 +30,7 @@ export async function fetchAPI(
   return json.data;
 }
 
-export const colorPicker = [
-  'rose',
-  'pink',
-  'fuchsia',
-  'purple',
-  'violet',
-  'indigo',
-  'blue',
-  'sky',
-  'cyan',
-  'teal',
-  'emerald',
-  'green',
-  'lime',
-  'yellow',
-  'amber',
-  'orange',
-  'red',
-  'gray',
-];
+export const urlBuilder = (src) => {
+  const fullUrl = configs.STRAPI_URL + src;
+  return fullUrl;
+};

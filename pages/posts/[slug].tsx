@@ -4,10 +4,8 @@ import {
   getAllPostsWithSlug,
   getPostAndMorePosts,
 } from '../../lib/posts';
-import { imageLoader } from '../../lib/utils';
 import Head from 'next/head';
 import Date from '../../components/Date';
-import utilStyles from '../../styles/utils.module.css';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import ErrorPage from 'next/error';
 import Image from 'next/image';
@@ -18,6 +16,7 @@ import { IoHourglassOutline, IoCalendar } from 'react-icons/io5';
 import { FC } from 'react';
 // import Markdown from '../../components/Markdown';
 import dynamic from 'next/dynamic';
+import { urlBuilder } from '../../lib/utils';
 const Markdown = dynamic(() => import('../../components/Markdown'), {
   ssr: false,
 });
@@ -77,13 +76,11 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
               <title>{post.title}</title>
             </Head>
             <article className="">
-              <div className="w-full">
+              <div className="w-full h-96 relative">
                 <Image
-                  className="object-cover object-center d rounded-lg"
-                  loader={imageLoader}
-                  src={post.coverImage.url}
-                  width="1000"
-                  height="300rem"
+                  className="object-cover object-center rounded-lg"
+                  src={urlBuilder(post.coverImage.url)}
+                  layout="fill"
                   alt="Post picture"
                 />
               </div>
@@ -93,8 +90,7 @@ const Post: FC<PostProps> = ({ post, morePosts, preview }) => {
               <div className="flex items-center space-x-3">
                 <Image
                   className="rounded-full"
-                  loader={imageLoader}
-                  src={post.author.picture.url}
+                  src={urlBuilder(post.author.picture.url)}
                   alt="profile"
                   width="55rem"
                   height="55rem"

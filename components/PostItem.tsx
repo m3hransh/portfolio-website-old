@@ -3,8 +3,8 @@ import Date from './Date';
 import { PostView } from '../lib/posts';
 import Image from 'next/image';
 import { IoCalendar, IoHourglassOutline } from 'react-icons/io5';
-import { imageLoader } from '../lib/utils';
 import Tags from '../components/Tags';
+import { urlBuilder } from '../lib/utils';
 
 interface PostItemProps {
   postView: PostView;
@@ -19,10 +19,10 @@ const PostItem: FC<PostItemProps> = ({ postView }) => {
       <div className="flex flex-1">
         <div className="mr-4 relative flex-none hidden lg:block w-24 h-24 ">
           <Image
-            loader={imageLoader}
-            src={postView.coverImage.url}
+            src={urlBuilder(postView.coverImage.url)}
             alt="Cover Image"
-            layout="fill"
+            width={200}
+            height={200}
             objectFit="cover"
             className="rounded-lg shadow"
           />
@@ -47,11 +47,11 @@ const PostItem: FC<PostItemProps> = ({ postView }) => {
         <div className="flex flex-col ml-2 flex-none items-center">
           <div className="relative w-12 h-12 ">
             <Image
-              loader={imageLoader}
               className="shadow rounded-full"
-              src={postView.author.picture?.url}
+              src={urlBuilder(postView.author.picture?.url)}
+              width={48}
+              height={48}
               alt="Avatar"
-              layout="fill"
             />
           </div>
           <p className="text-xs">{postView.author.name}</p>

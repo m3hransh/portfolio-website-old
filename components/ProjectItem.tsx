@@ -2,13 +2,13 @@ import React, { FC } from 'react';
 import Date from './Date';
 import { ProjectView } from '../lib/projects';
 import Image from 'next/image';
-import { imageLoader } from '../lib/utils';
 import {
   IoCalendar,
   IoRocketOutline,
   IoLogoGithub,
 } from 'react-icons/io5';
 import Tags from './Tags';
+import { urlBuilder } from '../lib/utils';
 
 interface ProjectItemProps {
   projectView: ProjectView;
@@ -25,14 +25,14 @@ const ProjectItem: FC<ProjectItemProps> = ({ projectView }) => {
       "
     >
       {/* Image, title and contributer */}
-      <div className="flex flex-row-reverse justify-between ">
-        <div className="relative flex-none  lg:block w-24 h-24 ">
+      <div className="flex flex-row-reverse justify-between">
+        <div className="relative flex-none lg:block w-24 h-24">
           <Image
-            loader={imageLoader}
-            src={projectView.coverImage.url}
+            src={urlBuilder(projectView.coverImage.url)}
             alt="Cover Image"
-            layout="fill"
             objectFit="cover"
+            width={200}
+            height={200}
             className="rounded-lg shadow"
           />
         </div>
@@ -47,15 +47,15 @@ const ProjectItem: FC<ProjectItemProps> = ({ projectView }) => {
             {projectView.contributers &&
               projectView.contributers.map((contributer) => (
                 <div
-                  className="relative w-8 h-8 "
+                  className="relative w-8 h-8"
                   key={contributer.name}
                 >
                   <Image
-                    loader={imageLoader}
                     className="shadow rounded-full"
-                    src={contributer.picture?.url}
+                    src={urlBuilder(contributer.picture?.url)}
                     alt="Avatar"
-                    layout="fill"
+                    width={48}
+                    height={48}
                   />
                 </div>
               ))}

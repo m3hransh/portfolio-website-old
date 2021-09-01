@@ -1,5 +1,25 @@
 import { FC } from 'react';
-import { colorPicker } from '../lib/utils';
+
+export const colorPicker = [
+  'rose',
+  'pink',
+  'fuchsia',
+  'purple',
+  'violet',
+  'indigo',
+  'blue',
+  'sky',
+  'cyan',
+  'teal',
+  'emerald',
+  'green',
+  'lime',
+  'yellow',
+  'amber',
+  'orange',
+  'red',
+  'gray',
+];
 
 interface TagsProps {
   tags: { name: string; id: number }[];
