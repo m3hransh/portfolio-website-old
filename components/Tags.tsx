@@ -1,24 +1,14 @@
 import { FC } from 'react';
 
 export const colorPicker = [
-  'rose',
-  'pink',
-  'fuchsia',
-  'purple',
-  'violet',
-  'indigo',
-  'blue',
-  'sky',
-  'cyan',
-  'teal',
-  'emerald',
-  'green',
-  'lime',
-  'yellow',
-  'amber',
-  'orange',
-  'red',
-  'gray',
+  ['#FDA4AF', '#BE123C'],
+  ['#D8B4FE', '#6B21A8'],
+  ['#A5B4FC', '#4338CA'],
+  ['#7DD3FC', '#075985'],
+  ['#6EE7B7', '#047857'],
+  ['#BEF264', '#4D7C0F'],
+  ['#FDE047', '#F59E0B'],
+  ['#FED7AA', '#EA580C'],
 ];
 
 interface TagsProps {
@@ -35,11 +25,11 @@ const Tags: FC<TagsProps> = ({ tags, className }) => {
             key={tag.id}
             className={`linkPop text-xs m-0.5 inline-flex items-center font-bold 
               leading-sm uppercase px-3 py-1 
-              bg-${colorPicker[tag.id % n]}-600
-              text-${colorPicker[tag.id % n]}-200 
-              dark:bg-${colorPicker[tag.id % n]}-300
-              dark:text-${colorPicker[tag.id % n]}-800 
               rounded-full`}
+            style={{
+              color: colorPicker[tag.id % n][1],
+              backgroundColor: colorPicker[tag.id % n][0],
+            }}
           >
             {tag.name}
           </div>

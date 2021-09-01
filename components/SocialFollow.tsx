@@ -1,11 +1,9 @@
 import {
-  faYoutube,
-  faLinkedinIn,
-  faGithub,
-  faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+  FaYoutube,
+  FaGithub,
+  FaLinkedinIn,
+  FaTwitter,
+} from 'react-icons/fa';
 export const YouTubeLink =
   'https://www.youtube.com/channel/UCMsxbz4QS32ZqIrMSNcMH7Q';
 const GitHubLink = 'https://github.com/m3hransh';
@@ -16,29 +14,17 @@ const TwitterLink = 'https://twitter.com/Mehran87049642';
 export default function SocialFollow() {
   return (
     <div className="flex items-baseline space-x-3 justify-center  ">
-      <a target="_blank" href={YouTubeLink}>
-        <FontAwesomeIcon
-          className="h-10 socialIcon"
-          icon={faYoutube}
-        />
+      <a target="_blank" rel="noreferrer" href={YouTubeLink}>
+        <FaYoutube className="h-10 w-10 socialIcon" />
       </a>
-      <a target="_blank" href={GitHubLink}>
-        <FontAwesomeIcon
-          className="h-10 socialIcon"
-          icon={faGithub}
-        />
+      <a target="_blank" rel="noreferrer" href={GitHubLink}>
+        <FaGithub className="h-10 w-10 socialIcon" />
       </a>
-      <a target="_blank" href={LinkedIn}>
-        <FontAwesomeIcon
-          className="h-10 socialIcon"
-          icon={faLinkedinIn}
-        />
+      <a target="_blank" rel="noreferrer" href={LinkedIn}>
+        <FaLinkedinIn className="h-10 w-10 socialIcon" />
       </a>
-      <a target="_blank" href={TwitterLink}>
-        <FontAwesomeIcon
-          className="h-10 socialIcon"
-          icon={faTwitter}
-        />
+      <a target="_blank" rel="noreferrer" href={TwitterLink}>
+        <FaTwitter className="h-10 w-10 socialIcon" />
       </a>
     </div>
   );

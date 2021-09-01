@@ -64,7 +64,7 @@ export default function Navbar({ preview }) {
       return item;
     });
     setNavigation(nn);
-  }, [router.pathname]);
+  }, [router.pathname, navigation]);
 
   useEffect(() => {
     localStorage.theme = enabled ? 'dark' : 'white';

@@ -31,18 +31,18 @@ const Markdown: FC<MarkdownProps> = ({ className, markdown }) => {
         </div>
       ) : (
         <ReactMarkdown
-          children={markdown}
           components={{
             code({ node, inline, className, children, ...props }) {
               const match = /language-(\w+)/.exec(className || '');
               return !inline && match ? (
                 <SyntaxHighlighter
-                  children={String(children).replace(/\n$/, '')}
                   style={dracula}
                   language={match[1]}
                   PreTag="div"
                   {...props}
-                />
+                >
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
               ) : (
                 <code className={className} {...props}>
                   {children}
@@ -50,7 +50,9 @@ const Markdown: FC<MarkdownProps> = ({ className, markdown }) => {
               );
             },
           }}
-        />
+        >
+          {markdown}
+        </ReactMarkdown>
       )}
     </div>
   );

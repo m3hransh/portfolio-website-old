@@ -1,6 +1,7 @@
 import React from 'react';
 import SocialFollow from './SocialFollow';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const aboutContent = (
   <div>
@@ -35,10 +36,11 @@ export default function Hero({ className }) {
     <>
       <div className={`grid lg:grid-cols-3 ${className}`}>
         <div className="p-4 flex flex-col lg:max-w-xl ">
-          <div className="flex flex-col ">
-            <img
+          <div className="flex flex-col gap-2">
+            <Image
               src="/images/profile.svg"
-              className="p-8  h-72 lg:h-auto "
+              height={260}
+              width={260}
               alt={`Profile`}
             />
             <SocialFollow />

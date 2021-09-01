@@ -102,6 +102,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ projectView }) => {
             <a
               href={projectView.link}
               target="_blank"
+              rel="noreferrer"
               className="linkPop hover:text-primary-400 flex items-center"
             >
               <IoLogoGithub className="inline mr-2 " />
@@ -111,6 +112,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ projectView }) => {
           {projectView.previewLink && (
             <a
               href={projectView.previewLink}
+              rel="noreferrer"
               target="_blank"
               className="linkPop hover:text-primary-400 flex items-center"
             >
