@@ -13,7 +13,7 @@ interface PostItemProps {
 const PostItem: FC<PostItemProps> = ({ postView }) => {
   return (
     <div
-      className="bg-main-50 mt-4 transition transform duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:bg-main-200 
+      className="bg-main-50 scale-95 sm:scale-100 mt-4 transition transform duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:bg-main-200 
     dark:hover:bg-main-700 dark:bg-background-800 p-6 shadow-lg rounded-lg flex flex-col justify-between sm:flex-row"
     >
       <div className="flex flex-1">
@@ -41,21 +41,21 @@ const PostItem: FC<PostItemProps> = ({ postView }) => {
         </div>
       </div>
       {/* Tags and profile data */}
-      <div className="flex">
-        {/* This will be hidden after sm */}
-        <Tags className="my-auto sm:hidden" tags={postView.tags} />
-        <div className="flex flex-col ml-2 flex-none items-center">
-          <div className="relative w-12 h-12 ">
-            <Image
-              className="shadow rounded-full"
-              src={urlBuilder(postView.author.picture?.url)}
-              width={48}
-              height={48}
-              alt="Avatar"
-            />
+      <div className="flex mt-2 gap-4">
+        <div className="flex flex-row sm:flex-col ml-2 flex-none gap-4 items-center ">
+          <div className="flex flex-col items-center">
+            <div className="relative w-12 h-12 ">
+              <Image
+                className="shadow rounded-full"
+                src={urlBuilder(postView.author.picture?.url)}
+                width={48}
+                height={48}
+                alt="Avatar"
+              />
+            </div>
+            <p className="text-xs">{postView.author.name}</p>
           </div>
-          <p className="text-xs">{postView.author.name}</p>
-          <div className="flex mt-2 flex-col items-start">
+          <div className="flex flex-col items-start">
             <small className="text-main-500 flex items-center space-x-1">
               <IoCalendar className="inline" />
               <Date dateString={postView.date} />
@@ -66,6 +66,8 @@ const PostItem: FC<PostItemProps> = ({ postView }) => {
             </small>
           </div>
         </div>
+        {/* This will be hidden after sm */}
+        <Tags className=" my-auto sm:hidden" tags={postView.tags} />
       </div>
     </div>
   );

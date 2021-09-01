@@ -27,7 +27,7 @@ function Home({ allPostsData, preview }) {
           <Hero className="max-w-4xl mx-auto" />
         </header>
         <main className="max-w-4xl mx-auto">
-          <section className="px-12 py-8">
+          <section className="px-4 sm:px-12 py-8">
             <h2 className="text-4xl font-bold tracking-wider text-primary-600 dark:text-secondary-500 mt-4">
               Blog
             </h2>

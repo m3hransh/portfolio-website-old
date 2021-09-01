@@ -36,7 +36,7 @@ export default function Hero({ className }) {
     <>
       <div className={`grid lg:grid-cols-3 ${className}`}>
         <div className="p-4 flex flex-col lg:max-w-xl ">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col sm:p-9 gap-2">
             <Image
               src="/images/profile.svg"
               height={260}
