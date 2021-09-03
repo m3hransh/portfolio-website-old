@@ -16,16 +16,15 @@ const aboutContent = (
   <div className="mt-4 font-mono prose dark:prose-dark sm:prose-xl">
     <p>
       My name is <b>Mohammad Mehran Shahidi</b>. I am a{' '}
-      <b>Software Engineer</b> who knows how to work with modern tech
-      stack effectively to create scalable and efficient{' '}
-      <b>websites</b>.
+      <b>Software Engineer</b> keen on working with modern tech stack
+      effectively to create scalable and efficient <b>websites</b>.
     </p>
     <p>
       I am interested in writing about different things and explain
       them in simple words. I have a{' '}
       <Link href="/blog">
-        <a target="_blank">Blog </a>
-      </Link>
+        <a target="_blank">Blog</a>
+      </Link>{' '}
       and a{' '}
       <a target="_blank" rel="noreferrer" href={YouTubeLink}>
         Youtube Channel

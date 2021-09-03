@@ -41,7 +41,7 @@ const PostItem: FC<PostItemProps> = ({ postView }) => {
         </div>
       </div>
       {/* Tags and profile data */}
-      <div className="flex mt-2 gap-4">
+      <div className="flex flex-col mt-2 gap-4">
         <div className="flex flex-row sm:flex-col ml-2 flex-none gap-4 items-center ">
           <div className="flex flex-col items-center">
             <div className="relative w-12 h-12 ">
@@ -67,7 +67,7 @@ const PostItem: FC<PostItemProps> = ({ postView }) => {
           </div>
         </div>
         {/* This will be hidden after sm */}
-        <Tags className=" my-auto sm:hidden" tags={postView.tags} />
+        <Tags className="my-auto sm:hidden" tags={postView.tags} />
       </div>
     </div>
   );
