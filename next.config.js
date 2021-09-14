@@ -2,6 +2,6 @@ const configs = require('./configs.json');
 
 module.exports = {
   images: {
-    domains: [configs.STRAPI_DOMAIN],
+    domains: [process.env.STRAPI_DOMAIN],
   },
 }

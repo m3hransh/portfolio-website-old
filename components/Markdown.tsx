@@ -15,7 +15,8 @@ const Markdown: FC<MarkdownProps> = ({ className, markdown }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(true), 2000);
+    // Timer to do the prcessing of markdown
+    const timer = setTimeout(() => setLoading(true), 1000);
     return () => clearTimeout(timer);
   });
   return (

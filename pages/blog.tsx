@@ -22,7 +22,7 @@ function Blog({ allPostsData, preview }) {
       </Head>
       <main className="max-w-4xl w-10/12 mx-auto mb-5">
         <section className="lg:px-12">
-          <h2 className="text-4xl font-bold tracking-wider text-secondary-600 dark:text-secondary-500 mt-4 font-serif">
+          <h2 className="text-4xl font-bold tracking-wider text-secondary-600 dark:text-secondary-500 mt-4 ">
             Blog Posts
           </h2>
           <BlogItems allPostsData={allPostsData} />

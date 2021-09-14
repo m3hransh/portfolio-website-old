@@ -18,6 +18,8 @@
     "react-loader-spinner": "^4.0.0",
     "react-markdown": "^7.0.0",
     "react-syntax-highlighter": "^15.4.4",
+    "remark": "^14.0.1",
+    "remark-html": "^14.0.0",
     "sharp": "^0.29.0",
     "webpack": "^5.51.1"
   },

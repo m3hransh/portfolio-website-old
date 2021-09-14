@@ -31,6 +31,6 @@ export async function fetchAPI(
 }
 
 export const urlBuilder = (src) => {
-  const fullUrl = configs.STRAPI_URL + src;
+  const fullUrl = process.env.NEXT_PUBLIC_IMAGE_PATH + src;
   return fullUrl;
 };
