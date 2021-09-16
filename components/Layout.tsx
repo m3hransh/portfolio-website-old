@@ -1,10 +1,7 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import React from 'react';
 import Navbar from './Nav';
-import Hero from './Hero';
 
-const name = 'Mehran Shahidi';
 export const siteTitle = 'Mehran Shahidi';
 
 export default function Layout({

@@ -1,5 +1,4 @@
 import { ImageLoader } from 'next/image';
-import configs from '../configs.json';
 
 export const imageLoader: ImageLoader = (props) => {
   return (process.env.NEXT_PUBLIC_IMAGE_PATH as string) + props.src;
