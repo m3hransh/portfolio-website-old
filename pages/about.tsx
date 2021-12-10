@@ -12,7 +12,7 @@ import { getAboutPage, AboutPage } from '../lib/pages';
 import remarkHtml from 'remark-html';
 import { remark } from 'remark';
 import Certifications from '../components/About/Certifications';
-
+import TimeLine from '../components/About/Timeline';
 export const getStaticProps: GetStaticProps = async ({
   preview = false,
 }) => {
@@ -71,6 +71,7 @@ const About: FC<AboutProps> = ({ content, preview }) => {
           </CardPannel>
         </div>
         <Certifications className="p-4" content={content.body[0]} />
+        <TimeLine />
       </div>
     </Layout>
   );

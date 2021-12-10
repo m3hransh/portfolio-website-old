@@ -16,14 +16,16 @@ const Certifications: FC<CertificationsProps> = ({
 }) => {
   return (
     <div className={className}>
-      <h1 className="text-2xl text-secondary-600 dark:text-secondary-400 font-bold">
-        {content.name}
-      </h1>
-      <ul>
-        {content.items?.map((item) => (
-          <Item key={item.id} item={item} />
-        ))}
-      </ul>
+      <details>
+        <summary className=" text-2xl text-secondary-600 dark:text-secondary-400 font-bold">
+          {content.name}
+        </summary>
+        <ul>
+          {content.items?.map((item) => (
+            <Item key={item.id} item={item} />
+          ))}
+        </ul>
+      </details>
     </div>
   );
 };
